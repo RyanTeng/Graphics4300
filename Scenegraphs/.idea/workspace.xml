@@ -8,15 +8,13 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/main/resources/scenegraphmodels/c.xml" line="138" />
     <bookmark url="file://$PROJECT_DIR$/src/main/resources/scenegraphmodels/c.xml" line="229" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/ScenegraphViewer.java" line="21" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba3d3202-2c53-42d8-bf08-84f95de96922" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenegraphs.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Scenegraphs.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/JOGLFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JOGLFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/scenegraphmodels/two-humanoids.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/scenegraphmodels/ymca.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/JOGLFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JOGLFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/scenegraphmodels/two-humanoids.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ScenegraphViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ScenegraphViewer.java" afterDir="false" />
     </list>
     <ignored path="Scenegraphs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/JOGLFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="65" column="49" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
+            <state relative-caret-position="204">
+              <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ScenegraphViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="272">
+              <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -133,11 +131,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/scenegraphmodels/c.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="148" column="67" lean-forward="true" selection-start-line="148" selection-start-column="67" selection-end-line="148" selection-end-column="67" />
+            <state relative-caret-position="221">
+              <caret line="141" column="40" selection-start-line="141" selection-start-column="40" selection-end-line="141" selection-end-column="40" />
               <folding>
                 <element signature="n#group#0;n#group#0;n#transform#0;n#group#0;n#transform#0;n#scene#0;n#!!top" />
                 <element signature="n#transform#0;n#group#0;n#group#0;n#transform#0;n#group#0;n#transform#0;n#scene#0;n#!!top" />
@@ -184,7 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../utilities/util/Scenegraph.java" />
         <option value="$PROJECT_DIR$/../utilities/util/GL3MeshRenderer.java" />
         <option value="$PROJECT_DIR$/../utilities/util/ShaderProgram.java" />
         <option value="$PROJECT_DIR$/../utilities/util/GL3ScenegraphRenderer.java" />
@@ -230,11 +227,12 @@
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/building.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/humanoid.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/face-hierarchy.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/JOGLFrame.java" />
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/y.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/m.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/ymca.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/c.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/JOGLFrame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ScenegraphViewer.java" />
       </list>
     </option>
   </component>
@@ -329,7 +327,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550507597030" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550508821132" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../extras" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -383,7 +381,7 @@
     <configuration name="ScenegraphViewer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ScenegraphViewer" />
       <module name="Scenegraphs" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="PROGRAM_PARAMETERS" value="building" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -465,12 +463,12 @@
       <workItem from="1550436615072" duration="906000" />
       <workItem from="1550441684575" duration="6923000" />
       <workItem from="1550491250955" duration="4750000" />
-      <workItem from="1550499506756" duration="7625000" />
+      <workItem from="1550499506756" duration="8848000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19459000" />
+    <option name="totallyTimeSpent" value="20682000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -772,27 +770,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ScenegraphViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/scenegraphmodels/face-hierarchy.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="56" column="30" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/JOGLFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="65" column="49" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -840,8 +821,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/scenegraphmodels/c.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="148" column="67" lean-forward="true" selection-start-line="148" selection-start-column="67" selection-end-line="148" selection-end-column="67" />
+        <state relative-caret-position="221">
+          <caret line="141" column="40" selection-start-line="141" selection-start-column="40" selection-end-line="141" selection-end-column="40" />
           <folding>
             <element signature="n#group#0;n#group#0;n#transform#0;n#group#0;n#transform#0;n#scene#0;n#!!top" />
             <element signature="n#transform#0;n#group#0;n#group#0;n#transform#0;n#group#0;n#transform#0;n#scene#0;n#!!top" />
@@ -849,6 +830,23 @@
             <element signature="n#transform#0;n#group#2;n#group#0;n#transform#0;n#group#0;n#transform#0;n#scene#0;n#!!top" />
             <element signature="n#set#0;n#transform#0;n#group#2;n#group#0;n#transform#0;n#group#0;n#transform#0;n#scene#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/JOGLFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ScenegraphViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
         </state>
       </provider>
     </entry>
