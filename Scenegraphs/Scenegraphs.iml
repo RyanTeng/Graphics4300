@@ -12,7 +12,7 @@
     <content url="file://$MODULE_DIR$/../extras">
       <sourceFolder url="file://$MODULE_DIR$/../extras" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
       <library>

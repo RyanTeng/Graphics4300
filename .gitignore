@@ -1,3 +1,6 @@
 
 .idea
-.Scenegraphs\.idea
+.Scenegraphs/.idea/misc.xml
+Scenegraphs/.idea/vcs.xml
+Scenegraphs/.idea/workspace.xml
+Scenegraphs/Scenegraphs.iml

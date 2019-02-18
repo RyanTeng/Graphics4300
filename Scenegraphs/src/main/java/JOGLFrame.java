@@ -63,7 +63,7 @@ public class JOGLFrame extends JFrame {
           textRenderer = new MyTextRenderer(glAutoDrawable);
           InputStream in = getClass().getClassLoader()
                   .getResourceAsStream
-                          ("scenegraphmodels/humanoid.xml");
+                          ("scenegraphmodels/building.xml");
           view.initScenegraph(glAutoDrawable, in);
 
           glAutoDrawable.getGL().setSwapInterval(0);
