@@ -31,7 +31,7 @@ public class JOGLFrame extends JFrame {
   private MyTextRenderer textRenderer;
   private GLCanvas canvas;
 
-  public JOGLFrame(String title) {
+  public JOGLFrame(String title, String loadin) {
     //routine JFrame setting stuff
     super(title);
     setSize(500, 500); //this opens a 400x400 window
@@ -63,7 +63,7 @@ public class JOGLFrame extends JFrame {
           textRenderer = new MyTextRenderer(glAutoDrawable);
           InputStream in = getClass().getClassLoader()
                   .getResourceAsStream
-                          ("scenegraphmodels/building.xml");
+                          (loadin);
           view.initScenegraph(glAutoDrawable, in);
 
           glAutoDrawable.getGL().setSwapInterval(0);

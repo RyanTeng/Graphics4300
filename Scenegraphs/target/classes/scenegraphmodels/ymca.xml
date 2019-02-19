@@ -1,0 +1,32 @@
+<scene>
+    <group>
+        <transform>
+            <set>
+                <translate>-100 0 0</translate>
+            </set>
+            <group name="Y" from="scenegraphmodels/y.xml">
+            </group>
+        </transform>
+        <transform>
+            <set>
+                <translate>-40 0 0</translate>
+            </set>
+            <group name="M" from="scenegraphmodels/m.xml">
+            </group>
+        </transform>
+        <transform>
+            <set>
+                <translate>20 0 0</translate>
+            </set>
+            <group name="C" from="scenegraphmodels/c.xml">
+            </group>
+        </transform>
+        <transform>
+            <set>
+                <translate>80 0 0</translate>
+            </set>
+            <group name="A" from="scenegraphmodels/a.xml">
+            </group>
+        </transform>
+    </group>
+</scene>
