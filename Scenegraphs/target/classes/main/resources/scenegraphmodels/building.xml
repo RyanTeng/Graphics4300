@@ -2,7 +2,7 @@
     <instance name="box" path="models/box"></instance>
     <transform>
         <set>
-            <translate>0 -105 -200</translate>
+            <translate>0 -105 -100</translate>
             <scale>500 10 500</scale>
         </set>
         <object instanceof="box">
@@ -13,7 +13,7 @@
     </transform>
     <transform>
         <set>
-            <translate>0 0 -200</translate>
+            <translate>0 0 -100</translate>
             <scale>100 100 100</scale>
         </set>
         <group name="Building">

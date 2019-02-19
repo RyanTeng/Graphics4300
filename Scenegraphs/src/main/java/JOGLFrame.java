@@ -110,6 +110,7 @@ public class JOGLFrame extends JFrame {
 
     @Override
     public void keyPressed(KeyEvent e) {
+      JOGLFrame.this.view.keyPressed(e.getKeyChar());
     }
 
     @Override
