@@ -1,0 +1,14 @@
+Graphics 4300 Scenegraphs Assignment
+
+Question 1:
+A scene graph is a tree where each node has a parent and a child, except for the root node. Each parent may not have a child, but each child MUST have a parent. 
+Inside each of the nodes is a transformation matrix, each one containing the data of a transformation that is relative to their parent node. The root node's transform is
+relative to the world coordinate system. Each node also may or may not contain mesh data and texture data, as those are the actual objects that each node needs to draw
+
+Question 2:
+The scenegraph is drawn by applying the transformations in order from the parent to the children. Then each of the nodes individually draws the mesh associated with the node.
+This way, all the objects get drawn in the proper relative space to each of their parents.
+
+Question 3:
+The GL3ScenegraphRenderer class is a class built to transfer all of our data over through OpenGL to the graphics card. If we wanted to create a textual renderer, we would 
+probably print the location of each of the objects along with a certain amount of context along with it, such as the object's parent node, its color, its transformatiom.
