@@ -1,0 +1,1 @@
+building global 0 100 100 0 50 0 0 1 0

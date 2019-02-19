@@ -1,22 +1,32 @@
 import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 /**
  * Created by ashesh on 10/30/2015.
  */
 public class ScenegraphViewer
 {
+    public static String loadin;
     public static void main(String []args)
     {
-        String loadin;
-        if (args[0].equalsIgnoreCase("ymca")) {
-            loadin = "scenegraphmodels/ymca.xml";
+        File file = new File(args[0]);
+        try {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNext()) {
+                String token = scanner.next();
+                if (token.equalsIgnoreCase("ymca")){
+                    loadin = "scenegraphmodels/ymca.xml";
+                }
+                else if (token.equalsIgnoreCase("building")) {
+                    loadin = "scenegraphmodels/building.xml";
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        else if (args[0].equalsIgnoreCase("building")) {
-            loadin = "scenegraphmodels/building.xml";
-        }
-        else {
-            loadin = "";
-        }
+
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
