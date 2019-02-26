@@ -20,7 +20,7 @@ public class ScenegraphViewer
                     loadin = "scenegraphmodels/ymca.xml";
                 }
                 else if (token.equalsIgnoreCase("building")) {
-                    loadin = "scenegraphmodels/building.xml";
+                    loadin = "scenegraphmodels/ymca.xml";
                 }
             }
         } catch (FileNotFoundException e) {

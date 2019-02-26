@@ -8,6 +8,7 @@ import org.joml.Vector3f;
 import org.joml.Vector4f;
 
 
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,9 +34,17 @@ public class View {
     private Matrix4f projection, trackballTransform;
     private float trackballRadius;
     private Vector2f mousePos;
+    private float camX;
     private float camY;
     private float camZ;
+    private float camXSpeed;
+    private float camYSpeed;
+    private float camZSpeed;
+    private float rotX;
+    private float rotY;
+    private float rotZ;
     private float theta;
+    private float thetaSpeed;
     private char lastKeyPressed;
 
 
@@ -51,10 +60,17 @@ public class View {
         trackballRadius = 1000;
         trackballTransform = new Matrix4f();
         scenegraph = null;
-        camY = 50;
-        camZ = 80;
+        camX = 2;
+        camY = 2;
+        camZ = 100;
+        camXSpeed = 0;
+        camYSpeed = 0;
+        camZSpeed = 0;
+        rotX = 0;
+        rotY = 0;
+        rotZ = 0;
         theta = 0;
-        lastKeyPressed = 'g';
+        thetaSpeed = 0;
     }
 
     public void initScenegraph(GLAutoDrawable gla, InputStream in) throws Exception {
@@ -115,16 +131,13 @@ public class View {
          * Right now this matrix is identity, which means "no transformations"
          */
         modelView.push(new Matrix4f());
-        if (lastKeyPressed == 't') {
-            trackballTransform = new Matrix4f().rotate(theta / trackballRadius, 0, 1, 0);
-            theta += 10;
-            modelView.peek().lookAt(new Vector3f(100, 100, 100), new Vector3f(0, 50, 0), new Vector3f(0, 1, 0))
-                    .mul(trackballTransform);
-        }
-        if (lastKeyPressed == 'g') {
-            modelView.peek().lookAt(new Vector3f(0, 100, 100), new Vector3f(0, 50, 0), new Vector3f(0, 1, 0)).mul(trackballTransform);
-        }
-
+        trackballTransform = new Matrix4f().rotate(theta / trackballRadius, rotX, rotY, rotZ);
+        modelView.peek().lookAt(new Vector3f(camX, camY, camZ), new Vector3f(camX, camY, 0), new Vector3f(0, 1, 0))
+                .mul(trackballTransform);
+        camX += camXSpeed;
+        camY += camYSpeed;
+        camZ += camZSpeed;
+        theta += thetaSpeed;
 
 
 
@@ -155,28 +168,82 @@ public class View {
 
     }
 
-    public void keyPressed(char e) {
-        lastKeyPressed = e;
+    public void keyPressed(KeyEvent e) {
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_RIGHT:
+                camXSpeed = 1;
+                break;
+            case KeyEvent.VK_LEFT:
+                camXSpeed = -1;
+                break;
+            case KeyEvent.VK_UP:
+                camYSpeed = 1;
+                break;
+            case KeyEvent.VK_DOWN:
+                camYSpeed = -1;
+                break;
+            case KeyEvent.VK_A:
+                rotY = 1;
+                thetaSpeed = -1;
+                break;
+            case KeyEvent.VK_D:
+                rotY = 1;
+                thetaSpeed = 1;
+                break;
+            case KeyEvent.VK_W:
+                rotX = 1;
+                thetaSpeed = -1;
+                break;
+            case KeyEvent.VK_S:
+                rotX = 1;
+                thetaSpeed = 1;
+                break;
+            case KeyEvent.VK_F:
+                rotZ = 1;
+                thetaSpeed = -1;
+                break;
+            case KeyEvent.VK_C:
+                rotZ = 1;
+                thetaSpeed = 1;
+                break;
+        }
     }
 
-    public void mousePressed(int x, int y) {
-        mousePos = new Vector2f(x, y);
+    public void keyReleased(KeyEvent e) {
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_RIGHT:
+                camXSpeed = 0;
+                break;
+            case KeyEvent.VK_LEFT:
+                camXSpeed = 0;
+                break;
+            case KeyEvent.VK_UP:
+                camYSpeed = 0;
+                break;
+            case KeyEvent.VK_DOWN:
+                camYSpeed = 0;
+                break;
+            case KeyEvent.VK_A:
+                thetaSpeed = 0;
+                break;
+            case KeyEvent.VK_D:
+                thetaSpeed = 0;
+                break;
+            case KeyEvent.VK_W:
+                thetaSpeed = 0;
+                break;
+            case KeyEvent.VK_S:
+                thetaSpeed = 0;
+                break;
+            case KeyEvent.VK_F:
+                thetaSpeed = 0;
+                break;
+            case KeyEvent.VK_C:
+                thetaSpeed = 0;
+                break;
+        }
     }
 
-    public void mouseReleased(int x, int y) {
-        System.out.println("Released");
-    }
-
-    public void mouseDragged(int x, int y) {
-        Vector2f newM = new Vector2f(x, y);
-
-        Vector2f delta = new Vector2f(newM.x - mousePos.x, newM.y - mousePos.y);
-        mousePos = new Vector2f(newM);
-
-        trackballTransform = new Matrix4f().rotate(delta.x / trackballRadius, 0, 1, 0)
-                .rotate(delta.y / trackballRadius, 1, 0, 0)
-                .mul(trackballTransform);
-    }
 
 
     public void reshape(GLAutoDrawable gla, int x, int y, int width, int height) {
