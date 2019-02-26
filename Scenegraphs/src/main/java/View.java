@@ -40,11 +40,12 @@ public class View {
     private float camXSpeed;
     private float camYSpeed;
     private float camZSpeed;
-    private float rotX;
-    private float rotY;
-    private float rotZ;
-    private float theta;
-    private float thetaSpeed;
+    private float thetaX;
+    private float thetaXSpeed;
+    private float thetaY;
+    private float thetaYSpeed;
+    private float thetaZ;
+    private float thetaZSpeed;
     private char lastKeyPressed;
 
 
@@ -57,20 +58,21 @@ public class View {
     public View() {
         projection = new Matrix4f();
         modelView = new Stack<Matrix4f>();
-        trackballRadius = 1000;
+        trackballRadius = 100;
         trackballTransform = new Matrix4f();
         scenegraph = null;
-        camX = 2;
-        camY = 2;
+        camX = 0;
+        camY = 0;
         camZ = 100;
         camXSpeed = 0;
         camYSpeed = 0;
         camZSpeed = 0;
-        rotX = 0;
-        rotY = 0;
-        rotZ = 0;
-        theta = 0;
-        thetaSpeed = 0;
+        thetaX = (float)-Math.PI/2;
+        thetaXSpeed = 0;
+        thetaY = (float)-Math.PI/2;
+        thetaYSpeed = 0;
+        thetaZ = (float)Math.PI/2;
+        thetaZSpeed = 0;
     }
 
     public void initScenegraph(GLAutoDrawable gla, InputStream in) throws Exception {
@@ -131,13 +133,16 @@ public class View {
          * Right now this matrix is identity, which means "no transformations"
          */
         modelView.push(new Matrix4f());
-        trackballTransform = new Matrix4f().rotate(theta / trackballRadius, rotX, rotY, rotZ);
-        modelView.peek().lookAt(new Vector3f(camX, camY, camZ), new Vector3f(camX, camY, 0), new Vector3f(0, 1, 0))
-                .mul(trackballTransform);
+        modelView.peek().lookAt(new Vector3f(camX, camY, camZ),
+                new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
+                new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
         camX += camXSpeed;
         camY += camYSpeed;
         camZ += camZSpeed;
-        theta += thetaSpeed;
+        thetaX += thetaXSpeed / trackballRadius;
+        thetaY += thetaYSpeed / trackballRadius;
+        thetaZ += thetaZSpeed / trackballRadius;
+
 
 
 
@@ -169,7 +174,7 @@ public class View {
     }
 
     public void keyPressed(KeyEvent e) {
-        switch(e.getKeyCode()) {
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_RIGHT:
                 camXSpeed = 1;
                 break;
@@ -183,34 +188,28 @@ public class View {
                 camYSpeed = -1;
                 break;
             case KeyEvent.VK_A:
-                rotY = 1;
-                thetaSpeed = -1;
+                thetaXSpeed = -1;
                 break;
             case KeyEvent.VK_D:
-                rotY = 1;
-                thetaSpeed = 1;
+                thetaXSpeed = 1;
                 break;
             case KeyEvent.VK_W:
-                rotX = 1;
-                thetaSpeed = -1;
+                thetaYSpeed = -1;
                 break;
             case KeyEvent.VK_S:
-                rotX = 1;
-                thetaSpeed = 1;
+                thetaYSpeed = 1;
                 break;
             case KeyEvent.VK_F:
-                rotZ = 1;
-                thetaSpeed = -1;
+                thetaZSpeed = -1;
                 break;
             case KeyEvent.VK_C:
-                rotZ = 1;
-                thetaSpeed = 1;
+                thetaZSpeed = 1;
                 break;
         }
     }
 
     public void keyReleased(KeyEvent e) {
-        switch(e.getKeyCode()) {
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_RIGHT:
                 camXSpeed = 0;
                 break;
@@ -224,26 +223,25 @@ public class View {
                 camYSpeed = 0;
                 break;
             case KeyEvent.VK_A:
-                thetaSpeed = 0;
+                thetaXSpeed = 0;
                 break;
             case KeyEvent.VK_D:
-                thetaSpeed = 0;
+                thetaXSpeed = 0;
                 break;
             case KeyEvent.VK_W:
-                thetaSpeed = 0;
+                thetaYSpeed = 0;
                 break;
             case KeyEvent.VK_S:
-                thetaSpeed = 0;
+                thetaYSpeed = 0;
                 break;
             case KeyEvent.VK_F:
-                thetaSpeed = 0;
+                thetaZSpeed = 0;
                 break;
             case KeyEvent.VK_C:
-                thetaSpeed = 0;
+                thetaZSpeed = 0;
                 break;
         }
     }
-
 
 
     public void reshape(GLAutoDrawable gla, int x, int y, int width, int height) {
