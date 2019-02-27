@@ -6,6 +6,10 @@ import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
+import util.Material;
+import util.ObjImporter;
+import util.ObjectInstance;
+import util.PolygonMesh;
 
 
 import java.awt.event.KeyEvent;
@@ -31,9 +35,8 @@ import java.util.Stack;
 public class View {
     private int WINDOW_WIDTH, WINDOW_HEIGHT;
     private Stack<Matrix4f> modelView;
-    private Matrix4f projection, trackballTransform;
+    private Matrix4f projection;
     private float trackballRadius;
-    private Vector2f mousePos;
     private float camX;
     private float camY;
     private float camZ;
@@ -49,18 +52,17 @@ public class View {
     private char lastKeyPressed;
     private int toggle;
 
-
     private util.ShaderProgram program;
     private util.ShaderLocationsVault shaderLocations;
     private int projectionLocation;
     private sgraph.IScenegraph<VertexAttrib> scenegraph;
+    private util.ObjectInstance camera;
 
 
     public View() {
         projection = new Matrix4f();
-        modelView = new Stack<Matrix4f>();
+        modelView = new Stack<>();
         trackballRadius = 100;
-        trackballTransform = new Matrix4f();
         scenegraph = null;
         camX = 0;
         camY = 0;
@@ -113,6 +115,8 @@ public class View {
 
         //get input variables that need to be given to the shader program
         projectionLocation = shaderLocations.getLocation("projection");
+
+        camera = readObj(gl, "src/main/resources/models/Digi_Cam.obj");
     }
 
     @SuppressWarnings("Duplicates")
@@ -123,17 +127,12 @@ public class View {
         gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT);
         gl.glEnable(gl.GL_DEPTH_TEST);
 
-
         program.enable(gl);
 
-        while (!modelView.empty())
+        while (!modelView.empty()) {
             modelView.pop();
+        }
 
-        /*
-         *In order to change the shape of this triangle, we can either move the vertex positions above, or "transform" them
-         * We use a modelview matrix to store the transformations to be applied to our triangle.
-         * Right now this matrix is identity, which means "no transformations"
-         */
         modelView.push(new Matrix4f());
 
         FloatBuffer fb = Buffers.newDirectFloatBuffer(16);
@@ -155,6 +154,7 @@ public class View {
             modelView.peek().lookAt(new Vector3f(camX, camY, camZ),
                     new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
                     new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
+            drawCamera(gla, gl);
 
             gl.glViewport(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
             scenegraph.draw(modelView);
@@ -178,6 +178,39 @@ public class View {
         program.disable(gl);
 
 
+    }
+
+    private void drawCamera(GLAutoDrawable gla, GL3 gl) {
+        FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
+        FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
+        Matrix4f camMat = new Matrix4f();
+        Material mat = new Material();
+        camMat.lookAt(new Vector3f(camX, camY, camZ),
+                new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
+                new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
+
+        camMat.scale(20,20f,20f);
+
+        mat.setAmbient(0.5f, 0.5f, 0.5f);
+        mat.setDiffuse(1, 1, 1);
+        mat.setSpecular(1f, 1f, 1f);
+
+        //pass the projection matrix to the shader
+        gl.glUniformMatrix4fv(
+                shaderLocations.getLocation("projection"),
+                1, false, projection.get(fb16));
+
+        //pass the modelview matrix to the shader
+        gl.glUniformMatrix4fv(
+                shaderLocations.getLocation("modelview"),
+                1, false, camMat.get(fb16));
+
+        //send the color of the triangle
+        gl.glUniform4fv(
+                shaderLocations.getLocation("vColor")
+                , 1, mat.getAmbient().get(fb4));
+
+        camera.draw(gla);
     }
 
     public void keyPressed(KeyEvent e) {
@@ -204,10 +237,10 @@ public class View {
                 thetaXSpeed = 1;
                 break;
             case KeyEvent.VK_W:
-                thetaYSpeed = -1;
+                thetaYSpeed = 1;
                 break;
             case KeyEvent.VK_S:
-                thetaYSpeed = 1;
+                thetaYSpeed = -1;
                 break;
             case KeyEvent.VK_F:
                 thetaZSpeed = -1;
@@ -253,6 +286,25 @@ public class View {
         }
     }
 
+    private util.ObjectInstance readObj(GL3 gl, String file) throws FileNotFoundException {
+        InputStream in;
+        PolygonMesh tmesh;
+        in = new FileInputStream(file);
+
+        tmesh = ObjImporter.importFile(new VertexAttribProducer(), in, true);
+
+        Map<String, String> shaderToVertexAttribute = new HashMap<String, String>();
+
+        shaderToVertexAttribute.put("vPosition", "position");
+
+
+        return new ObjectInstance(gl,
+                program,
+                shaderLocations,
+                shaderToVertexAttribute,
+                tmesh, new
+                String(file));
+    }
 
     public void reshape(GLAutoDrawable gla, int x, int y, int width, int height) {
         GL gl = gla.getGL();
