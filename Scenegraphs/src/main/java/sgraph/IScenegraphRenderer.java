@@ -14,7 +14,7 @@ import java.util.Stack;
  * independent of specific rendering technologies.
  * @author Amit Shesh
  */
-public interface IScenegraphRenderer
+public interface  IScenegraphRenderer
 {
     /**
      * Set a rendering context. Renderers often need a rendering context (e.g. the windowing

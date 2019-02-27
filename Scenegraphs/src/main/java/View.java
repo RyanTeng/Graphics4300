@@ -47,6 +47,7 @@ public class View {
     private float thetaZ;
     private float thetaZSpeed;
     private char lastKeyPressed;
+    private int toggle;
 
 
     private util.ShaderProgram program;
@@ -73,6 +74,7 @@ public class View {
         thetaYSpeed = 0;
         thetaZ = (float)Math.PI/2;
         thetaZSpeed = 0;
+        toggle = 0;
     }
 
     public void initScenegraph(GLAutoDrawable gla, InputStream in) throws Exception {
@@ -113,7 +115,7 @@ public class View {
         projectionLocation = shaderLocations.getLocation("projection");
     }
 
-
+    @SuppressWarnings("Duplicates")
     public void draw(GLAutoDrawable gla) {
         GL3 gl = gla.getGL().getGL3();
 
@@ -133,9 +135,10 @@ public class View {
          * Right now this matrix is identity, which means "no transformations"
          */
         modelView.push(new Matrix4f());
-        modelView.peek().lookAt(new Vector3f(camX, camY, camZ),
-                new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
-                new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
+
+        FloatBuffer fb = Buffers.newDirectFloatBuffer(16);
+        gl.glUniformMatrix4fv(projectionLocation, 1, false, projection.get(fb));
+
         camX += camXSpeed;
         camY += camYSpeed;
         camZ += camZSpeed;
@@ -143,30 +146,34 @@ public class View {
         thetaY += thetaYSpeed / trackballRadius;
         thetaZ += thetaZSpeed / trackballRadius;
 
+        if (toggle % 2 == 1) {
+            modelView.peek().lookAt(new Vector3f(0, 100, 100), new Vector3f(0, 50, 0), new Vector3f(0, 1, 0));
+            gl.glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+            scenegraph.draw(modelView);
+            gl.glFlush();
 
+            modelView.peek().lookAt(new Vector3f(camX, camY, camZ),
+                    new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
+                    new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
 
+            gl.glViewport(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+            scenegraph.draw(modelView);
+            gl.glFlush();
 
-        /*
-         *Supply the shader with all the matrices it expects.
-         */
-        FloatBuffer fb = Buffers.newDirectFloatBuffer(16);
-        gl.glUniformMatrix4fv(projectionLocation, 1, false, projection.get(fb));
-        //return;
+        }
+        else {
+            modelView.peek().lookAt(new Vector3f(camX, camY, camZ),
+                    new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
+                    new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
+            gl.glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+            scenegraph.draw(modelView);
+            gl.glFlush();
 
-
-        //gl.glPolygonMode(GL.GL_FRONT_AND_BACK,GL3.GL_LINE); //OUTLINES
-
-        scenegraph.draw(modelView);
-        /*
-         *OpenGL batch-processes all its OpenGL commands.
-         *  *The next command asks OpenGL to "empty" its batch of issued commands, i.e. draw
-         *
-         *This a non-blocking function. That is, it will signal OpenGL to draw, but won't wait for it to
-         *finish drawing.
-         *
-         *If you would like OpenGL to start drawing and wait until it is done, call glFinish() instead.
-         */
-        gl.glFlush();
+            modelView.peek().lookAt(new Vector3f(0, 100, 100), new Vector3f(0, 50, 0), new Vector3f(0, 1, 0));
+            gl.glViewport(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+            scenegraph.draw(modelView);
+            gl.glFlush();
+        }
 
         program.disable(gl);
 
@@ -174,6 +181,9 @@ public class View {
     }
 
     public void keyPressed(KeyEvent e) {
+        if (e.getKeyChar() == ' ') {
+            toggle++;
+        }
         switch (e.getKeyCode()) {
             case KeyEvent.VK_RIGHT:
                 camXSpeed = 1;
