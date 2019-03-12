@@ -1,5 +1,6 @@
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.*;
+import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.GLBuffers;
 
 import org.joml.Matrix4f;
@@ -36,6 +37,7 @@ public class View {
     private int WINDOW_WIDTH, WINDOW_HEIGHT;
     private Stack<Matrix4f> modelView;
     private Matrix4f projection;
+    private GLU glu;
     private float trackballRadius;
     private float camX;
     private float camY;
@@ -78,8 +80,9 @@ public class View {
         thetaZ = (float) Math.PI / 2;
         thetaZSpeed = 0;
         toggle = 0;
-        fov = 20;
+        fov = 1;
         offset = 0;
+        glu = new GLU();
     }
 
     public void initScenegraph(GLAutoDrawable gla, InputStream in) throws Exception {
@@ -151,8 +154,8 @@ public class View {
         if (fov <= 1.0f) {
             fov = 1.0f;
         }
-        if (fov >= 40.0f) {
-            fov = 40.0f;
+        if (fov >= 15.0f) {
+            fov = 15.0f;
         }
 
         if (toggle % 2 == 1) {
@@ -173,11 +176,14 @@ public class View {
             /*
             Handles all of the camera drone's movement. Includes roll, pitch, and yaw, as well as zoom controls
              */
+
             modelView.peek().lookAt(new Vector3f(camX, camY, camZ),
                     new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
-                    new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0)).perspective((float) Math.toRadians(fov), (float) WINDOW_WIDTH / WINDOW_HEIGHT, 0.01f, 100);
+                    new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0)).scale(fov, fov, fov);
+                    //.translate(0, 0, fov);
 
             gl.glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+            glu.gluPerspective(fov, WINDOW_WIDTH/WINDOW_HEIGHT, 0.1f, 100f);
             scenegraph.draw(modelView);
             gl.glFlush();
 
@@ -270,16 +276,16 @@ public class View {
                 thetaZSpeed = 1;
                 break;
             case KeyEvent.VK_MINUS:
-                offset = 1;
+                offset = -1;
                 break;
             case KeyEvent.VK_SUBTRACT:
-                offset = 1;
+                offset = -1;
                 break;
             case KeyEvent.VK_EQUALS:
-                offset = -1;
+                offset = 1;
                 break;
             case KeyEvent.VK_ADD:
-                offset = -1;
+                offset = 1;
                 break;
         }
     }
