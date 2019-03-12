@@ -49,7 +49,8 @@ public class View {
     private float thetaYSpeed;
     private float thetaZ;
     private float thetaZSpeed;
-    private char lastKeyPressed;
+    private float fov;
+    private float offset;
     private int toggle;
 
     private util.ShaderProgram program;
@@ -70,13 +71,15 @@ public class View {
         camXSpeed = 0;
         camYSpeed = 0;
         camZSpeed = 0;
-        thetaX = (float)-Math.PI/2;
+        thetaX = (float) -Math.PI / 2;
         thetaXSpeed = 0;
-        thetaY = (float)-Math.PI/2;
+        thetaY = (float) -Math.PI / 2;
         thetaYSpeed = 0;
-        thetaZ = (float)Math.PI/2;
+        thetaZ = (float) Math.PI / 2;
         thetaZSpeed = 0;
         toggle = 0;
+        fov = 20;
+        offset = 0;
     }
 
     public void initScenegraph(GLAutoDrawable gla, InputStream in) throws Exception {
@@ -144,13 +147,19 @@ public class View {
         thetaX += thetaXSpeed / trackballRadius;
         thetaY += thetaYSpeed / trackballRadius;
         thetaZ += thetaZSpeed / trackballRadius;
+        fov += offset;
+        if (fov <= 1.0f) {
+            fov = 1.0f;
+        }
+        if (fov >= 40.0f) {
+            fov = 40.0f;
+        }
 
         if (toggle % 2 == 1) {
             modelView.peek().lookAt(new Vector3f(0, 100, 100), new Vector3f(0, 50, 0), new Vector3f(0, 1, 0));
             gl.glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
             scenegraph.draw(modelView);
             gl.glFlush();
-
             modelView.peek().lookAt(new Vector3f(camX, camY, camZ),
                     new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
                     new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
@@ -160,15 +169,21 @@ public class View {
             scenegraph.draw(modelView);
             gl.glFlush();
 
-        }
-        else {
+        } else {
+            /*
+            Handles all of the camera drone's movement. Includes roll, pitch, and yaw, as well as zoom controls
+             */
             modelView.peek().lookAt(new Vector3f(camX, camY, camZ),
                     new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
-                    new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
+                    new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0)).perspective((float) Math.toRadians(fov), (float) WINDOW_WIDTH / WINDOW_HEIGHT, 0.01f, 100);
+
             gl.glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
             scenegraph.draw(modelView);
             gl.glFlush();
 
+            /*
+            The stationary camera drawn on the top right of the screen
+             */
             modelView.peek().lookAt(new Vector3f(0, 100, 100), new Vector3f(0, 50, 0), new Vector3f(0, 1, 0));
             gl.glViewport(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
             scenegraph.draw(modelView);
@@ -180,6 +195,9 @@ public class View {
 
     }
 
+    /*
+    Draws the camera object
+    */
     private void drawCamera(GLAutoDrawable gla, GL3 gl) {
         FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
         FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
@@ -189,7 +207,7 @@ public class View {
                 new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
                 new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
 
-        camMat.scale(20,20f,20f);
+        camMat.scale(20, 20f, 20f);
 
         mat.setAmbient(0.5f, 0.5f, 0.5f);
         mat.setDiffuse(1, 1, 1);
@@ -213,6 +231,9 @@ public class View {
         camera.draw(gla);
     }
 
+    /*
+    Tracks the keys that were pressed and increments speed values accordingly
+    */
     public void keyPressed(KeyEvent e) {
         if (e.getKeyChar() == ' ') {
             toggle++;
@@ -248,9 +269,24 @@ public class View {
             case KeyEvent.VK_C:
                 thetaZSpeed = 1;
                 break;
+            case KeyEvent.VK_MINUS:
+                offset = 1;
+                break;
+            case KeyEvent.VK_SUBTRACT:
+                offset = 1;
+                break;
+            case KeyEvent.VK_EQUALS:
+                offset = -1;
+                break;
+            case KeyEvent.VK_ADD:
+                offset = -1;
+                break;
         }
     }
 
+    /*
+    Tracks the keys that were pressed and decrements speed values accordingly
+    */
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_RIGHT:
@@ -282,6 +318,18 @@ public class View {
                 break;
             case KeyEvent.VK_C:
                 thetaZSpeed = 0;
+                break;
+            case KeyEvent.VK_SUBTRACT:
+                offset = 0;
+                break;
+            case KeyEvent.VK_ADD:
+                offset = 0;
+                break;
+            case KeyEvent.VK_MINUS:
+                offset = 0;
+                break;
+            case KeyEvent.VK_EQUALS:
+                offset = 0;
                 break;
         }
     }

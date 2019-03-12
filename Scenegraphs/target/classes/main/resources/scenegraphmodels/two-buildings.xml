@@ -1,0 +1,289 @@
+<scene>
+    <instance name="box" path="models/box"></instance>
+    <instance name="cone" path="models/cone"></instance>
+    <transform>
+        <set>
+            <translate>0 -125 -200</translate>
+            <scale>1000 50 500</scale>
+        </set>
+        <object instanceof="box">
+            <material>
+                <color>0.5 0.5 0.5</color>
+            </material>
+        </object>
+    </transform>
+    <transform>
+        <set>
+            <translate>250 0 -100</translate>
+            <scale>100 100 100</scale>
+        </set>
+        <group name="Building">
+            <transform>
+                <set>
+                    <scale>0.05 0.05 0.05</scale>
+                </set>
+                <group>
+                    <group>
+                        <transform name="base">
+                            <set>
+                                <translate>0 -20 0</translate>
+                            </set>
+                            <group name="actualbase">
+                                <transform name="left">
+                                    <set>
+                                        <translate>-25 5 0</translate>
+                                        <scale>1 10 50</scale>
+                                    </set>
+                                    <object instanceof="box">
+                                        <material>
+                                            <color>0 0 1</color>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="right">
+                                    <set>
+                                        <translate>25 5 0</translate>
+                                        <scale>1 10 50</scale>
+                                    </set>
+                                    <object instanceof="box">
+                                        <material>
+                                            <color>0 1 0</color>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="back">
+                                    <set>
+                                        <translate>0 0 -25</translate>
+                                        <scale>50 20 1</scale>
+                                    </set>
+                                    <object instanceof="box">
+                                        <material>
+                                            <color>1 0 0</color>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="frontbottom">
+                                    <set>
+                                        <translate>0 0 25</translate>
+                                        <scale>50 5 1</scale>
+                                    </set>
+                                    <object instanceof="box">
+                                        <material>
+                                            <color>0.25 0.25 0.25</color>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="fronttop">
+                                    <set>
+                                        <translate>0 8 25</translate>
+                                        <scale>50 5 1</scale>
+                                    </set>
+                                    <object instanceof="box">
+                                        <material>
+                                            <color>0.25 0.25 0.25</color>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="frontleft">
+                                    <set>
+                                        <translate>-18.75 4 25</translate>
+                                        <scale>12.5 5 1</scale>
+                                    </set>
+                                    <object instanceof="box">
+                                        <material>
+                                            <color>0.25 0.25 0.25</color>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="frontright">
+                                    <set>
+                                        <translate>18.75 4 25</translate>
+                                        <scale>12.5 5 1</scale>
+                                    </set>
+                                    <object instanceof="box">
+                                        <material>
+                                            <color>0.25 0.25 0.25</color>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="frontcenter">
+                                    <set>
+                                        <translate>0 4 25</translate>
+                                        <scale>4 5 1</scale>
+                                    </set>
+                                    <object instanceof="box">
+                                        <material>
+                                            <color>0.25 0.25 0.25</color>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="closedwindow">
+                                    <set>
+                                        <translate>-7.25 4 25</translate>
+                                        <scale>10.5 3 0.25</scale>
+                                    </set>
+                                    <object instanceof="box">
+                                        <material>
+                                            <color>0 66.7 79.2</color>
+                                        </material>
+                                    </object>
+                                </transform>
+                            </group>
+                        </transform>
+                        <transform name="level2">
+                            <set>
+                                <translate>0 -10 0</translate>
+                            </set>
+                            <group copyof="actualbase">
+                            </group>
+                        </transform>
+                        <transform name="level3">
+                            <set>
+                                <translate>0 0 0</translate>
+                            </set>
+                            <group copyof="actualbase">
+                            </group>
+                        </transform>
+                        <transform name="floor1">
+                            <set>
+                                <scale>50 1 50</scale>
+                                <translate>0 -20 0</translate>
+                            </set>
+                            <object instanceof="box">
+                                <material>
+                                    <color>1 1 1</color>
+                                </material>
+                            </object>
+                        </transform>
+                        <transform name="floor2">
+                            <set>
+                                <scale>50 1 50</scale>
+                                <translate>0 -10 0</translate>
+                            </set>
+                            <object instanceof="box">
+                                <material>
+                                    <color>1 0 1</color>
+                                </material>
+                            </object>
+                        </transform>
+                        <transform name="floor3">
+                            <set>
+                                <scale>50 1 50</scale>
+                            </set>
+                            <object instanceof="box">
+                                <material>
+                                    <color>1 1 0</color>
+                                </material>
+                            </object>
+                        </transform>
+                        <transform name="roof">
+                            <set>
+                                <scale>50 1 50</scale>
+                                <translate>0 10 0</translate>
+                            </set>
+                            <object instanceof="box">
+                                <material>
+                                    <color>0.7 0.7 0.7</color>
+                                </material>
+                            </object>
+                        </transform>
+                    </group>
+                </group>
+            </transform>
+        </group>
+    </transform>
+    <transform name="Building2">
+        <set>
+            <translate>-250 0 -100</translate>
+            <scale>100 100 100</scale>
+        </set>
+        <group>
+            <transform>
+                <set>
+                    <scale>0.05 0.05 0.05</scale>
+                </set>
+                <group>
+                    <group>
+                        <transform name="2level1">
+                            <set>
+                                <translate>0 -20 0</translate>
+                            </set>
+                            <group copyof="actualbase">
+                            </group>
+                        </transform>
+                        <transform name="2level2">
+                            <set>
+                                <translate>0 -10 0</translate>
+                                <scale>0.5 1 0.5</scale>
+                            </set>
+                            <group copyof="actualbase">
+                            </group>
+                        </transform>
+                        <transform name="2level3">
+                            <set>
+                                <translate>0 0 0</translate>
+                                <scale>0.25 1 0.25</scale>
+                            </set>
+                            <group copyof="actualbase">
+                            </group>
+                        </transform>
+                        <transform name="floor1">
+                            <set>
+                                <scale>50 1 50</scale>
+                                <translate>0 -20 0</translate>
+                            </set>
+                            <object instanceof="box">
+                                <material>
+                                    <color>1 1 1</color>
+                                </material>
+                            </object>
+                        </transform>
+                        <transform name="floor2">
+                            <set>
+                                <scale>50 1 50</scale>
+                                <translate>0 -10 0</translate>
+                            </set>
+                            <object instanceof="box">
+                                <material>
+                                    <color>1 0 1</color>
+                                </material>
+                            </object>
+                        </transform>
+                        <transform name="floor3">
+                            <set>
+                                <scale>25 1 25</scale>
+                            </set>
+                            <object instanceof="box">
+                                <material>
+                                    <color>1 1 0</color>
+                                </material>
+                            </object>
+                        </transform>
+                        <transform name="roof">
+                            <set>
+                                <scale>12.5 1 12.5</scale>
+                                <translate>0 10 0</translate>
+                            </set>
+                            <object instanceof="box">
+                                <material>
+                                    <color>0.7 0.7 0.7</color>
+                                </material>
+                            </object>
+                        </transform>
+                        <transform name="rooftop">
+                            <set>
+                                <translate>0 10 0</translate>
+                                <scale>6 6 6</scale>
+                            </set>
+                            <object instanceof="cone">
+                                <material>
+                                    <color>1 1 1</color>
+                                </material>
+                            </object>
+                        </transform>
+                    </group>
+                </group>
+            </transform>
+        </group>
+    </transform>
+</scene>
