@@ -167,7 +167,7 @@ public class View {
                     new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
                     new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
             drawCamera(gla, gl);
-            drawCamAcc(gla, gl);
+            //drawCamAcc(gla, gl);
 
             gl.glViewport(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
             scenegraph.draw(modelView);
@@ -211,11 +211,11 @@ public class View {
         Matrix4f camMat = new Matrix4f();
         Material mat = new Material();
         camMat.lookAt(new Vector3f(camX, camY, camZ),
-                new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
-                new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
+                new Vector3f(0, 0, -200),
+                new Vector3f((float) 0, 1, 0));
 
         camMat.rotate(1.5f, 1, 0, 0);
-        camMat.translate(20, 0, 0);
+        camMat.translate(camX, camY, camZ);
         camMat.scale(20f, 60f, 20f);
 
 
@@ -251,12 +251,12 @@ public class View {
         Matrix4f camMat = new Matrix4f();
         Material mat = new Material();
         camMat.lookAt(new Vector3f(camX, camY, camZ),
-                new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
-                new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
+                new Vector3f(0, 0, -200),
+                new Vector3f((float) 0, 1, 0));
 
         camMat.rotate(1.5f, 1, 0, 0);
+        camMat.translate(camX, camY, camZ);
         camMat.scale(20f, 60f, 20f);
-
 
         mat.setAmbient(0.5f, 0.5f, 0.5f);
         mat.setDiffuse(0, 0, 0);
