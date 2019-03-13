@@ -60,8 +60,7 @@ public class View {
     private int projectionLocation;
     private sgraph.IScenegraph<VertexAttrib> scenegraph;
     private util.ObjectInstance camera;
-
-
+    private util.ObjectInstance propeller;
     public View() {
         projection = new Matrix4f();
         modelView = new Stack<>();
@@ -122,7 +121,8 @@ public class View {
         //get input variables that need to be given to the shader program
         projectionLocation = shaderLocations.getLocation("projection");
 
-        camera = readObj(gl, "src/main/resources/models/Digi_Cam.obj");
+        camera = readObj(gl, "src/main/resources/models/cylinder.obj");
+        propeller = readObj(gl, "src/main/resources/models/box.obj");
     }
 
     @SuppressWarnings("Duplicates")
@@ -167,6 +167,7 @@ public class View {
                     new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
                     new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
             drawCamera(gla, gl);
+            drawCamAcc(gla, gl);
 
             gl.glViewport(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
             scenegraph.draw(modelView);
@@ -213,10 +214,11 @@ public class View {
                 new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
                 new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
 
-        camMat.scale(20, 20f, 20f);
+        camMat.scale(20f, 60f, 20f);
+        camMat.rotate(1.5f, 1, 0, 1);
 
         mat.setAmbient(0.5f, 0.5f, 0.5f);
-        mat.setDiffuse(1, 1, 1);
+        mat.setDiffuse(0, 0, 0);
         mat.setSpecular(1f, 1f, 1f);
 
         //pass the projection matrix to the shader
@@ -235,6 +237,54 @@ public class View {
                 , 1, mat.getAmbient().get(fb4));
 
         camera.draw(gla);
+    }
+
+    /*
+    Draws propellers and light slot of camera
+     */
+
+    private void drawCamAcc(GLAutoDrawable gla, GL3 gl) {
+        FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
+        FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
+
+        Material mat = new Material();
+
+        mat.setAmbient(0.5f, 0.5f, 0.5f);
+        mat.setDiffuse(1, 1, 1);
+        mat.setSpecular(1f, 1f, 1f);
+
+        Matrix4f prop1aMat = new Matrix4f();
+        //Matrix4f prop1bMat = new Matrix4f();
+
+        //propellers 1a & 1b
+        util.ObjectInstance prop1a = propeller;
+        //util.ObjectInstance prop1b = propeller;
+
+        prop1aMat.scale(10f, 2f, 1f);
+        //prop1bMat.scale(10f, 2f, 1f);
+
+        prop1aMat.translate(camX + 5f, camY + 2f, camZ);
+        //prop1aMat.translate(camX - 5f, camY + 2f, camZ);
+
+        //prop1bMat.rotate(90, 1, 0, 0);
+
+        //propellers 2a & 2b
+        //ObjectInstance prop2a = propeller;
+        //ObjectInstance prop2b = propeller;
+
+        //pass the modelview matrix to the shader
+        gl.glUniformMatrix4fv(
+                shaderLocations.getLocation("modelview"),
+                1, false, prop1aMat.get(fb16));
+
+
+        //send the color of the triangle
+        gl.glUniform4fv(
+                shaderLocations.getLocation("vColor")
+                , 1, mat.getAmbient().get(fb4));
+
+        prop1a.draw(gla);
+        //prop1b.draw(gla);
     }
 
     /*
