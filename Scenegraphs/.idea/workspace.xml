@@ -14,6 +14,7 @@
     <list default="true" id="ba3d3202-2c53-42d8-bf08-84f95de96922" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View.class" afterDir="false" />
     </list>
     <ignored path="Scenegraphs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +37,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="215" lean-forward="true" selection-start-line="215" selection-end-line="215" />
+            <state relative-caret-position="293">
+              <caret line="275" column="79" lean-forward="true" selection-start-line="275" selection-start-column="79" selection-end-line="275" selection-end-column="79" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/scenegraphmodels/ymca.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -55,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/scenegraphmodels/m.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1091">
-              <caret line="184" column="48" lean-forward="true" selection-start-line="184" selection-start-column="48" selection-end-line="184" selection-end-column="48" />
+              <caret line="184" column="48" selection-start-line="184" selection-start-column="48" selection-end-line="184" selection-end-column="48" />
               <folding>
                 <element signature="n#group#0;n#group#0;n#transform#0;n#group#0;n#transform#0;n#scene#0;n#!!top" />
                 <element signature="n#transform#0;n#group#0;n#group#0;n#transform#0;n#group#0;n#transform#0;n#scene#0;n#!!top" />
@@ -71,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/ScenegraphViewer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="18" column="52" lean-forward="true" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
+              <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1042#1043#0" expanded="true" />
@@ -85,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/SceneXMLReader.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-442">
-              <caret line="46" column="22" lean-forward="true" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+              <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -120,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/models/cylinder.obj">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -180,6 +184,8 @@
       <find>loadin</find>
       <find>drawCamera</find>
       <find>camera</find>
+      <find>ambient</find>
+      <find>spin</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\thelx\Documents\CS4300\Graphics4300\Scenegraphs\src\main\java</dir>
@@ -253,10 +259,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-316" />
-    <option name="y" value="-30" />
-    <option name="width" value="1400" />
-    <option name="height" value="987" />
+    <option name="x" value="11" />
+    <option name="y" value="-15" />
+    <option name="width" value="1943" />
+    <option name="height" value="1043" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -355,7 +361,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552512639065" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552520721617" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CirclesSolution" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -508,7 +514,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46060000" />
+    <option name="totallyTimeSpent" value="50990000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -523,7 +529,7 @@
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13965885" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13965885" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -532,8 +538,8 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49733475" weight="0.28141224" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48933902" visible="true" weight="0.11630322" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.39653304" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48933902" visible="true" weight="0.11630322" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.3956386" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32902467" />
@@ -605,7 +611,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/View.java</url>
-          <line>105</line>
+          <line>111</line>
           <properties />
           <option name="timeStamp" value="38" />
         </line-breakpoint>
@@ -805,13 +811,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../extras/util/IVertexData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="67" lean-forward="true" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../extras/util/IVertexData.java" />
     <entry file="file://$PROJECT_DIR$/../extras/util/Material.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-425">
@@ -875,14 +875,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/SceneXMLReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-442">
-          <caret line="46" column="22" lean-forward="true" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ScenegraphViewer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="18" column="52" lean-forward="true" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1042#1043#0" expanded="true" />
@@ -906,7 +906,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/models/cylinder.obj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -920,14 +920,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/scenegraphmodels/ymca.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/scenegraphmodels/m.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1091">
-          <caret line="184" column="48" lean-forward="true" selection-start-line="184" selection-start-column="48" selection-end-line="184" selection-end-column="48" />
+          <caret line="184" column="48" selection-start-line="184" selection-start-column="48" selection-end-line="184" selection-end-column="48" />
           <folding>
             <element signature="n#group#0;n#group#0;n#transform#0;n#group#0;n#transform#0;n#scene#0;n#!!top" />
             <element signature="n#transform#0;n#group#0;n#group#0;n#transform#0;n#group#0;n#transform#0;n#scene#0;n#!!top" />
@@ -940,8 +940,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="215" lean-forward="true" selection-start-line="215" selection-end-line="215" />
+        <state relative-caret-position="293">
+          <caret line="275" column="79" lean-forward="true" selection-start-line="275" selection-start-column="79" selection-end-line="275" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
