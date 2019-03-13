@@ -214,8 +214,10 @@ public class View {
                 new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
                 new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
 
+        camMat.rotate(1.5f, 1, 0, 0);
+        camMat.translate(20, 0, 0);
         camMat.scale(20f, 60f, 20f);
-        camMat.rotate(1.5f, 1, 0, 1);
+
 
         mat.setAmbient(0.5f, 0.5f, 0.5f);
         mat.setDiffuse(0, 0, 0);
@@ -246,45 +248,86 @@ public class View {
     private void drawCamAcc(GLAutoDrawable gla, GL3 gl) {
         FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
         FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
-
+        Matrix4f camMat = new Matrix4f();
         Material mat = new Material();
+        camMat.lookAt(new Vector3f(camX, camY, camZ),
+                new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
+                new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
+
+        camMat.rotate(1.5f, 1, 0, 0);
+        camMat.scale(20f, 60f, 20f);
+
 
         mat.setAmbient(0.5f, 0.5f, 0.5f);
-        mat.setDiffuse(1, 1, 1);
+        mat.setDiffuse(0, 0, 0);
         mat.setSpecular(1f, 1f, 1f);
 
-        Matrix4f prop1aMat = new Matrix4f();
-        //Matrix4f prop1bMat = new Matrix4f();
-
-        //propellers 1a & 1b
-        util.ObjectInstance prop1a = propeller;
-        //util.ObjectInstance prop1b = propeller;
-
-        prop1aMat.scale(10f, 2f, 1f);
-        //prop1bMat.scale(10f, 2f, 1f);
-
-        prop1aMat.translate(camX + 5f, camY + 2f, camZ);
-        //prop1aMat.translate(camX - 5f, camY + 2f, camZ);
-
-        //prop1bMat.rotate(90, 1, 0, 0);
-
-        //propellers 2a & 2b
-        //ObjectInstance prop2a = propeller;
-        //ObjectInstance prop2b = propeller;
+        //pass the projection matrix to the shader
+        gl.glUniformMatrix4fv(
+                shaderLocations.getLocation("projection"),
+                1, false, projection.get(fb16));
 
         //pass the modelview matrix to the shader
         gl.glUniformMatrix4fv(
                 shaderLocations.getLocation("modelview"),
-                1, false, prop1aMat.get(fb16));
-
+                1, false, camMat.get(fb16));
 
         //send the color of the triangle
         gl.glUniform4fv(
                 shaderLocations.getLocation("vColor")
                 , 1, mat.getAmbient().get(fb4));
 
-        prop1a.draw(gla);
-        //prop1b.draw(gla);
+        propeller.draw(gla);
+//        FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
+//        FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
+//
+//        Material mat = new Material();
+//
+//        mat.setAmbient(0.5f, 0.5f, 0.5f);
+//        mat.setDiffuse(1, 1, 1);
+//        mat.setSpecular(1f, 1f, 1f);
+//
+//        Matrix4f prop1aMat = new Matrix4f();
+//        //Matrix4f prop1bMat = new Matrix4f();
+//
+//        prop1aMat.lookAt(new Vector3f(camX, camY, camZ),
+//                new Vector3f(camX + (float) Math.cos(thetaX), camY + (float) Math.cos(thetaY), camZ + (float) Math.sin(thetaX) + (float) Math.sin(thetaY)),
+//                new Vector3f((float) Math.cos(thetaZ), (float) Math.sin(thetaZ), 0));
+//
+//        //propellers 1a & 1b
+//        util.ObjectInstance prop1a = propeller;
+//        //util.ObjectInstance prop1b = propeller;
+//
+//        prop1aMat.scale(10f, 200f, 1f);
+//        //prop1bMat.scale(10f, 2f, 1f);
+//
+//        prop1aMat.translate(camX + 5f, camY + 2f, camZ);
+//        //prop1aMat.translate(camX - 5f, camY + 2f, camZ);
+//
+//        //prop1bMat.rotate(90, 1, 0, 0);
+//
+//        //propellers 2a & 2b
+//        //ObjectInstance prop2a = propeller;
+//        //ObjectInstance prop2b = propeller;
+//
+//        //pass the projection matrix to the shader
+//        gl.glUniformMatrix4fv(
+//                shaderLocations.getLocation("projection"),
+//                1, false, projection.get(fb16));
+//
+//        //pass the modelview matrix to the shader
+//        gl.glUniformMatrix4fv(
+//                shaderLocations.getLocation("modelview"),
+//                1, false, prop1aMat.get(fb16));
+//
+//
+//        //send the color of the triangle
+//        gl.glUniform4fv(
+//                shaderLocations.getLocation("vColor")
+//                , 1, mat.getAmbient().get(fb4));
+//
+//        propeller.draw(gla);
+//        //prop1b.draw(gla);
     }
 
     /*
