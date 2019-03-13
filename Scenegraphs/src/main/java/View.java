@@ -274,8 +274,9 @@ public class View {
                 new Vector3f((float) 0, 1, 0));
 
         //propeller is really far right of the drone, hold left arrow to see it
-        propMat.translate(camX + 2f, camY, camZ);
-        propMat.rotate(spin, 1, 0, 0);
+        propMat.translate(camX + 1f, camY, camZ);
+        propMat.rotate(90, 1, 0,0);
+        propMat.rotate(spin, 0, 0, 1);
         propMat.scale(.1f, 2f, .1f);
 
         mat.setAmbient(1f, 0f, 0f);
