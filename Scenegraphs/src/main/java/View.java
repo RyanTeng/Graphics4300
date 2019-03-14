@@ -256,12 +256,14 @@ public class View {
     }
 
     /*
-    Draws propellers and light slot of camera
+    Draws propellers and light slot of camera, wrapper for specific drawPropXY functions
      */
 
     private void drawCamAcc(GLAutoDrawable gla, GL3 gl) {
         drawProp1a(gla, gl);
-        //drawProp1b(gla, gl);
+        drawProp1b(gla, gl);
+        drawProp2a(gla, gl);
+        drawProp2b(gla, gl);
     }
 
     private void drawProp1a(GLAutoDrawable gla, GL3 gl) {
@@ -274,10 +276,10 @@ public class View {
                 new Vector3f((float) 0, 1, 0));
 
         //propeller is really far right of the drone, hold left arrow to see it
-        propMat.translate(camX + 1f, camY, camZ);
+        propMat.translate(camX + 1f, camY - .5f, camZ);
         propMat.rotate(90, 1, 0,0);
         propMat.rotate(spin, 0, 0, 1);
-        propMat.scale(.1f, 2f, .1f);
+        propMat.scale(.01f, 1f, .1f);
 
         mat.setAmbient(1f, 0f, 0f);
 
@@ -299,39 +301,110 @@ public class View {
         propeller1a.draw(gla);
     }
 
-//    private void drawProp1b(GLAutoDrawable gla, GL3 gl) {
-//        FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
-//        FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
-//        Matrix4f propMat = new Matrix4f();
-//        Material mat = new Material();
-//        propMat.lookAt(new Vector3f(camX, camY, camZ),
-//                new Vector3f(0, 0, -200),
-//                new Vector3f((float) 0, 1, 0));
-//
-//        //propeller is really far right of the drone, hold left arrow to see it
-//        propMat.translate(camX + 2f, camY, camZ);
-//        propMat.rotate(spin + 1.5f, 1, 0, 0);
-//        propMat.scale(.1f, 2f, .1f);
-//
-//        mat.setAmbient(1f, 0f, 0f);
-//
-//        //pass the projection matrix to the shader
-//        gl.glUniformMatrix4fv(
-//                shaderLocations.getLocation("projection"),
-//                1, false, projection.get(fb16));
-//
-//        //pass the modelview matrix to the shader
-//        gl.glUniformMatrix4fv(
-//                shaderLocations.getLocation("modelview"),
-//                1, false, propMat.get(fb16));
-//
-//        //send the color of the triangle
-//        gl.glUniform4fv(
-//                shaderLocations.getLocation("vColor")
-//                , 1, mat.getAmbient().get(fb4));
-//
-//        propeller1b.draw(gla);
-//    }
+    private void drawProp1b(GLAutoDrawable gla, GL3 gl) {
+        FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
+        FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
+        Matrix4f propMat = new Matrix4f();
+        Material mat = new Material();
+        propMat.lookAt(new Vector3f(camX, camY, camZ),
+                new Vector3f(0, 0, -200),
+                new Vector3f((float) 0, 1, 0));
+
+        //propeller is really far right of the drone, hold left arrow to see it
+        propMat.translate(camX + 1f, camY - .5f, camZ);
+        propMat.rotate(90, 1, 0,0);
+        propMat.rotate(spin + 1.5f, 0, 0, 1);
+        propMat.scale(.01f, 1f, .1f);
+
+        mat.setAmbient(1f, 0f, 0f);
+
+        //pass the projection matrix to the shader
+        gl.glUniformMatrix4fv(
+                shaderLocations.getLocation("projection"),
+                1, false, projection.get(fb16));
+
+        //pass the modelview matrix to the shader
+        gl.glUniformMatrix4fv(
+                shaderLocations.getLocation("modelview"),
+                1, false, propMat.get(fb16));
+
+        //send the color of the triangle
+        gl.glUniform4fv(
+                shaderLocations.getLocation("vColor")
+                , 1, mat.getAmbient().get(fb4));
+
+        propeller1b.draw(gla);
+    }
+
+    private void drawProp2a(GLAutoDrawable gla, GL3 gl) {
+        FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
+        FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
+        Matrix4f propMat = new Matrix4f();
+        Material mat = new Material();
+        propMat.lookAt(new Vector3f(camX, camY, camZ),
+                new Vector3f(0, 0, -200),
+                new Vector3f((float) 0, 1, 0));
+
+        //propeller is really far right of the drone, hold left arrow to see it
+        propMat.translate(camX - 1f, camY - .5f, camZ);
+        propMat.rotate(90, 1, 0,0);
+        propMat.rotate(spin, 0, 0, 1);
+        propMat.scale(.01f, 1f, .1f);
+
+        mat.setAmbient(1f, 0f, 0f);
+
+        //pass the projection matrix to the shader
+        gl.glUniformMatrix4fv(
+                shaderLocations.getLocation("projection"),
+                1, false, projection.get(fb16));
+
+        //pass the modelview matrix to the shader
+        gl.glUniformMatrix4fv(
+                shaderLocations.getLocation("modelview"),
+                1, false, propMat.get(fb16));
+
+        //send the color of the triangle
+        gl.glUniform4fv(
+                shaderLocations.getLocation("vColor")
+                , 1, mat.getAmbient().get(fb4));
+
+        propeller1a.draw(gla);
+    }
+
+    private void drawProp2b(GLAutoDrawable gla, GL3 gl) {
+        FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
+        FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
+        Matrix4f propMat = new Matrix4f();
+        Material mat = new Material();
+        propMat.lookAt(new Vector3f(camX, camY, camZ),
+                new Vector3f(0, 0, -200),
+                new Vector3f((float) 0, 1, 0));
+
+        //propeller is really far right of the drone, hold left arrow to see it
+        propMat.translate(camX - 1f, camY - .5f, camZ);
+        propMat.rotate(90, 1, 0,0);
+        propMat.rotate(spin + 1.5f, 0, 0, 1);
+        propMat.scale(.01f, 1f, .1f);
+
+        mat.setAmbient(1f, 0f, 0f);
+
+        //pass the projection matrix to the shader
+        gl.glUniformMatrix4fv(
+                shaderLocations.getLocation("projection"),
+                1, false, projection.get(fb16));
+
+        //pass the modelview matrix to the shader
+        gl.glUniformMatrix4fv(
+                shaderLocations.getLocation("modelview"),
+                1, false, propMat.get(fb16));
+
+        //send the color of the triangle
+        gl.glUniform4fv(
+                shaderLocations.getLocation("vColor")
+                , 1, mat.getAmbient().get(fb4));
+
+        propeller1b.draw(gla);
+    }
 
     /*
     Tracks the keys that were pressed and increments speed values accordingly
