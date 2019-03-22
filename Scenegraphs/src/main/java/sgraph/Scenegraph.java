@@ -44,6 +44,7 @@ public class Scenegraph<VertexType extends IVertexData> implements IScenegraph<V
         meshes = new HashMap<String,util.PolygonMesh<VertexType>>();
         nodes = new HashMap<String,INode>();
         textures = new HashMap<String,String>();
+        textures.put("", "");
     }
 
     public void dispose()
@@ -66,6 +67,11 @@ public class Scenegraph<VertexType extends IVertexData> implements IScenegraph<V
         for (String meshName:meshes.keySet())
         {
             this.renderer.addMesh(meshName,meshes.get(meshName));
+        }
+
+        for (String textureName:textures.keySet())
+        {
+            this.renderer.addTexture(textureName,textures.get(textureName));
         }
 
     }

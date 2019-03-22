@@ -1,0 +1,27 @@
+<scene>
+    <instance name="sphere" path="models/sphere.obj"/>
+    <instance name="box" path="models/box.obj"/>
+    <instance name="cylinder" path="models/cylinder.obj"/>
+    <instance name="cone" path="models/cone.obj"/>
+    <image name="checkerboard" path="checkerboard.png" />
+
+
+    <group>
+        <transform>
+            <set>
+                <translate>0 -25 0</translate>
+                <scale>50 50 50</scale>
+            </set>
+            <group>
+                <object instanceof="sphere" texture="checkerboard">
+                    <material>
+                        <ambient>0 0.1 0</ambient>
+                        <diffuse>0 0.8 0</diffuse>
+                        <specular>0 0.8 0</specular>
+                        <shininess>20</shininess>
+                    </material>
+                </object>
+            </group>
+        </transform>
+    </group>
+</scene>

@@ -134,7 +134,7 @@ public abstract class AbstractNode implements INode
 
     @Override
     public void setTextureName(String name) throws IllegalArgumentException {
-        throw new UnsupportedOperationException("Textures not supported yet!");
+        throw new IllegalArgumentException(getName()+" is not a leaf node");
     }
 
     /**

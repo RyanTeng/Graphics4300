@@ -23,7 +23,7 @@ public class LeafNode extends AbstractNode
      */
     protected util.Material material;
 
-    protected String textureName;
+    protected String textureName = "";
 
     public LeafNode(String instanceOf,IScenegraph graph,String name)
     {

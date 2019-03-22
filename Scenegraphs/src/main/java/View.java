@@ -158,7 +158,6 @@ public class View {
         FloatBuffer fb = Buffers.newDirectFloatBuffer(16);
         gl.glUniformMatrix4fv(projectionLocation, 1, false, projection.get(fb));
 
-        System.out.println(spin);
         camX += camXSpeed;
         camY += camYSpeed;
         camZ += camZSpeed;

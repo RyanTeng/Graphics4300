@@ -1,6 +1,8 @@
 <scene>
     <instance name="box" path="models/box"></instance>
     <instance name="cone" path="models/cone"></instance>
+    <image name="checkerboard" path="checkerboard.png" />
+    <image name="earthmap" path="earthmap.png" />
     <transform>
         <set>
             <translate>0 -125 -200</translate>
