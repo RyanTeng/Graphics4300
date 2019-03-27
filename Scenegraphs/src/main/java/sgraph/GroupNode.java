@@ -133,4 +133,8 @@ public class GroupNode extends AbstractNode
         return children;
     }
 
+    public List<Light> getLights() {
+        return new ArrayList<>();
+    }
+
 }
