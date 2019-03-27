@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+import java.util.List;
 
 
 /**
@@ -56,6 +57,8 @@ public class View {
     private int toggle;
     private float spin;
 
+
+
     private util.ShaderProgram program;
     private util.ShaderLocationsVault shaderLocations;
     private int projectionLocation;
@@ -66,6 +69,22 @@ public class View {
     private util.ObjectInstance propeller2a;
     private util.ObjectInstance propeller2b;
     private util.ObjectInstance light;
+
+
+    private List<ObjectInstance> meshObjects;
+
+    private List<Integer> lightCoordinateSystems;
+    private List<util.Light> lights;
+    private List<LightLocation> lightLocations;
+
+
+    class LightLocation {
+        int ambient, diffuse, specular, position;
+
+        public LightLocation() {
+            ambient = diffuse = specular = position = -1;
+        }
+    }
 
     public View() {
         projection = new Matrix4f();
@@ -88,6 +107,10 @@ public class View {
         fov = 1;
         offset = 0;
         glu = new GLU();
+
+        lights = new ArrayList<util.Light>();
+        lightCoordinateSystems = new ArrayList<Integer>();
+        lightLocations = new ArrayList<LightLocation>();
     }
 
     public void initScenegraph(GLAutoDrawable gla, InputStream in) throws Exception {
@@ -112,6 +135,19 @@ public class View {
         program.disable(gl);
     }
 
+    private void initLights() {
+        util.Light l = new util.Light();
+        l.setAmbient(0.8f, 0.8f, 0.8f);
+        l.setDiffuse(0.5f, 0.5f, 0.5f);
+        l.setSpecular(0.5f, 0.5f, 0.5f);
+        l.setPosition(00, 00, 100);
+        lights.add(l);
+        //read comments above where this list is declared
+        lightCoordinateSystems.add(meshObjects.size()); //world
+
+
+    }
+
     public void init(GLAutoDrawable gla) throws Exception {
         GL3 gl = gla.getGL().getGL3();
 
@@ -120,7 +156,7 @@ public class View {
         //compile and make our shader program. Look at the ShaderProgram class for details on how this is done
         program = new util.ShaderProgram();
 
-        program.createProgram(gl, "shaders/default.vert", "shaders/default"
+        program.createProgram(gl, "shaders/phong-multiple.vert", "shaders/phong-multiple"
                 + ".frag");
 
         shaderLocations = program.getAllShaderVariables(gl);
@@ -134,6 +170,7 @@ public class View {
         propeller2a = readObj(gl, "src/main/resources/models/box.obj");
         propeller2b = readObj(gl, "src/main/resources/models/box.obj");
         light = readObj(gl, "src/main/resources/models/sphere.obj");
+
 
     }
 

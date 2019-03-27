@@ -5,6 +5,7 @@ import util.IVertexData;
 
 import java.util.Map;
 import java.util.Stack;
+import java.util.List;
 
 /**
  * This interface provides a general interface for the scene graph to use.
@@ -67,7 +68,7 @@ public interface  IScenegraphRenderer
      * @param textureName
      * @param transformation
      */
-    void drawMesh(String name, util.Material material,String textureName,final Matrix4f transformation);
+    void drawMesh(String name, util.Material material,String textureName, final Matrix4f transformation);
 
     /**
      * Add a new texture with the given name and the path to the actual image file
@@ -76,5 +77,6 @@ public interface  IScenegraphRenderer
      * @param path
      */
     void addTexture(String name,String path);
+
     void dispose();
 }

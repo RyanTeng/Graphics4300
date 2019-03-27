@@ -8,7 +8,7 @@
             <translate>0 -125 -200</translate>
             <scale>1000 50 500</scale>
         </set>
-        <object instanceof="box">
+        <object instanceof="box" texture="checkerboard">
             <material>
                 <color>0.5 0.5 0.5</color>
             </material>
@@ -47,7 +47,7 @@
                                         <translate>25 5 0</translate>
                                         <scale>1 10 50</scale>
                                     </set>
-                                    <object instanceof="box">
+                                    <object instanceof="box" texture="earthmap">
                                         <material>
                                             <color>0 1 0</color>
                                         </material>
@@ -58,7 +58,7 @@
                                         <translate>0 0 -25</translate>
                                         <scale>50 20 1</scale>
                                     </set>
-                                    <object instanceof="box">
+                                    <object instanceof="box" texture="checkerboard">
                                         <material>
                                             <color>1 0 0</color>
                                         </material>

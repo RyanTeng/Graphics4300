@@ -5,7 +5,9 @@ import org.joml.Matrix4f;
 
 import java.util.Map;
 import java.util.Stack;
+import java.util.List;
 
+import util.Light;
 /**
  * This node represents the leaf of a scene graph. It is the only type of node that has
  * actual geometry to render.
@@ -24,6 +26,8 @@ public class LeafNode extends AbstractNode
     protected util.Material material;
 
     protected String textureName = "";
+
+    protected List<util.Light> lights;
 
     public LeafNode(String instanceOf,IScenegraph graph,String name)
     {
@@ -68,7 +72,19 @@ public class LeafNode extends AbstractNode
         return newclone;
     }
 
+    @Override
+    public void addLight(Light l) {
+        lights.add(l);
+    }
 
+    @Override
+    /**
+     * Getter method to retrieve the list of Lights of this node
+     * @return List<Light>
+     */
+    public List<Light> getLights() {
+        return lights;
+    }
     /**
      * Delegates to the scene graph for rendering. This has two advantages:
      * <ul>
@@ -84,7 +100,7 @@ public class LeafNode extends AbstractNode
     {
         if (objInstanceName.length()>0)
         {
-            context.drawMesh(objInstanceName,material,textureName,modelView.peek());
+            context.drawMesh(objInstanceName,material,textureName, modelView.peek());
         }
     }
 

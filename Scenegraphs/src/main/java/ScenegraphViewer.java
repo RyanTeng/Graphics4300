@@ -6,21 +6,20 @@ import java.util.Scanner;
 /**
  * Created by ashesh on 10/30/2015.
  */
-public class ScenegraphViewer
-{
+public class ScenegraphViewer {
     public static String loadin;
-    public static void main(String []args)
-    {
+
+    public static void main(String[] args) {
         File file = new File(args[0]);
         try {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNext()) {
                 String token = scanner.next();
-                if (token.equalsIgnoreCase("ymca")){
+                if (token.equalsIgnoreCase("ymca")) {
                     loadin = "scenegraphmodels/ymca.xml";
-                }
-                else if (token.equalsIgnoreCase("building")) {
-                    loadin = "scenegraphmodels/two-buildings.xml";
+                } else if (token.equalsIgnoreCase("building")) {
+                    //loadin = "scenegraphmodels/two-buildings.xml";
+                    loadin = "scenegraphmodels/cone.xml";
                 }
             }
         } catch (FileNotFoundException e) {
@@ -36,8 +35,7 @@ public class ScenegraphViewer
         });
     }
 
-    private static void createAndShowGUI(String loadin)
-    {
+    private static void createAndShowGUI(String loadin) {
         JFrame frame = new JOGLFrame("Scene graph Viewer", loadin);
         frame.setVisible(true);
     }

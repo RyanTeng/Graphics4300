@@ -111,5 +111,11 @@ public interface INode
      * @param l
      */
     void addLight(Light l);
+
+    /**
+     * Returns the list of Lights in this node.
+     * @return lights - the list of lights in this node
+     */
+    List<Light> getLights() throws IllegalArgumentException;
 }
 

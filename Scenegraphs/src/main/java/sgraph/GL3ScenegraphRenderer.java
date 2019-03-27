@@ -7,6 +7,7 @@ import com.jogamp.opengl.GLAutoDrawable;
 import org.joml.Matrix4f;
 import util.IVertexData;
 import util.TextureImage;
+import util.Light;
 
 import java.io.IOException;
 import java.nio.FloatBuffer;
@@ -36,6 +37,12 @@ public class GL3ScenegraphRenderer implements IScenegraphRenderer {
      * A map to store all the textures
      */
     protected Map<String, TextureImage> textures;
+
+    /**
+     * A List to store all lights
+     */
+    protected List<Light> lights;
+
     /**
      * A table of renderers for individual meshes
      */
@@ -155,6 +162,7 @@ public class GL3ScenegraphRenderer implements IScenegraphRenderer {
      *
      * @param name
      * @param material
+     * @param textureName
      * @param transformation
      */
     @Override
@@ -162,6 +170,8 @@ public class GL3ScenegraphRenderer implements IScenegraphRenderer {
         if (meshRenderers.containsKey(name)) {
             GL3 gl = glContext.getGL().getGL3();
             //get the color
+
+
 
             FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
 

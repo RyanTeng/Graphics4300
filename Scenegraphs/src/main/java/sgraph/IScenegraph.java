@@ -5,6 +5,8 @@ import com.jogamp.opengl.GLAutoDrawable;
 import org.joml.Matrix4f;
 import util.IVertexData;
 import util.ShaderProgram;
+import util.Light;
+
 
 import java.util.Map;
 import java.util.Stack;
@@ -99,5 +101,6 @@ public interface IScenegraph<VertexType extends IVertexData>
      * @param path
      */
     void addTexture(String name,String path);
+
     void dispose();
 }

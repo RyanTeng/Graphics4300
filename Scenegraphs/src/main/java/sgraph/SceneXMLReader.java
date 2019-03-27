@@ -83,6 +83,7 @@ class MyHandler<K extends IVertexData> extends DefaultHandler {
   }
 
   public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    Scanner sc;
     System.out.println("Start tag: " + qName);
     switch (qName) {
       case "scene": {
@@ -223,6 +224,33 @@ class MyHandler<K extends IVertexData> extends DefaultHandler {
       break;
       case "light":
         light = new Light();
+
+        for (int i = 0; i < attributes.getLength(); i++) {
+          if (attributes.getQName(i).equals("ambient")) {
+            sc = new Scanner(data);
+            light.setAmbient(sc.nextFloat(), sc.nextFloat(), sc.nextFloat());
+          }
+          else if (attributes.getQName(i).equals("diffuse")) {
+            sc = new Scanner(data);
+            light.setDiffuse(sc.nextFloat(), sc.nextFloat(), sc.nextFloat());
+          }
+          else if (attributes.getQName(i).equals("specular")) {
+            sc = new Scanner(data);
+            light.setSpecular(sc.nextFloat(), sc.nextFloat(), sc.nextFloat());
+          }
+          else if (attributes.getQName(i).equals("spotangle")) {
+            sc = new Scanner(data);
+            light.setSpotAngle(sc.nextFloat());
+          }
+          else if (attributes.getQName(i).equals("spotdirection")) {
+            sc = new Scanner(data);
+            light.setSpotDirection(sc.nextFloat(), sc.nextFloat(), sc.nextFloat());
+          }
+        }
+
+        //add the light to the current node, this might be incorrect
+        stackNodes.peek().addLight(light);
+
         break;
     }
     data = "";

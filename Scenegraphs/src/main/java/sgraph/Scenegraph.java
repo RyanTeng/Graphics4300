@@ -4,6 +4,7 @@ import com.jogamp.opengl.GL3;
 import org.joml.Matrix4f;
 import util.IVertexData;
 import util.PolygonMesh;
+import util.Light;
 
 import java.util.*;
 
@@ -147,6 +148,20 @@ public class Scenegraph<VertexType extends IVertexData> implements IScenegraph<V
         textures.put(name,path);
     }
 
+    /**
+     * Traverses the nodes and gets the lights from them
+     * @return the entire list of lights starting from the root node
+     */
+    public List<Light> getLights() {
+        List<Light> lights;
 
+        Iterator nodeIter = getNodes().entrySet().iterator();
 
+        //getNode -> null if it isn't a group node
+        while (nodeIter.hasNext()) {
+
+        }
+
+        return null;
+    }
 }

@@ -2,6 +2,7 @@ package sgraph;
 
 import org.joml.Matrix4f;
 import util.Light;
+import java.util.List;
 
 /**
  * This abstract class implements the {@link sgraph.INode} interface. It provides default methods
@@ -141,8 +142,15 @@ public abstract class AbstractNode implements INode
      * Adds a new light to this node.
      * @param l
      */
-    public void addLight(Light l) {
-        throw new UnsupportedOperationException("Lights not supported yet!");
+    public void addLight(Light l) throws IllegalArgumentException {
+        throw new IllegalArgumentException(getName()+" is not a leaf node");
+    }
+
+    /**
+     * Returns the list of Lights in this node.
+     */
+    public List<Light> getLights() throws IllegalArgumentException {
+        throw new IllegalArgumentException(getName()+" is not is leaf node");
     }
 
 }

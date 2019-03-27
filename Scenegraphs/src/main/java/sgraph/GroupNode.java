@@ -132,4 +132,5 @@ public class GroupNode extends AbstractNode
     {
         return children;
     }
+
 }
