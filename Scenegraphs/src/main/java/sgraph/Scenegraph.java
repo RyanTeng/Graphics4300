@@ -153,11 +153,15 @@ public class Scenegraph<VertexType extends IVertexData> implements IScenegraph<V
      * @return the entire list of lights
      */
     public List<Light> getLights() {
-        List<Light> lights = new ArrayList<Light>();
+        List<Light> lights;
 
-        for (INode node: getNodes().values()) {
-            lights.addAll(node.getLights());
+        Iterator nodeIter = getNodes().entrySet().iterator();
+
+        //getNode -> null if it isn't a group node
+        while (nodeIter.hasNext()) {
+
         }
-        return lights;
+
+        return null;
     }
 }
