@@ -150,7 +150,7 @@ public class Scenegraph<VertexType extends IVertexData> implements IScenegraph<V
 
     /**
      * Traverses the nodes and gets the lights from them
-     * @return the entire list of lights starting from the root node
+     * @return the entire list of lights
      */
     public List<Light> getLights() {
         List<Light> lights = new ArrayList<Light>();

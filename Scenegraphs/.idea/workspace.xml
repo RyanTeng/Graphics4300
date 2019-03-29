@@ -14,6 +14,25 @@
     <list default="true" id="ba3d3202-2c53-42d8-bf08-84f95de96922" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sgraph/Scenegraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sgraph/Scenegraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JOGLFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JOGLFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JOGLFrame$KeyboardListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JOGLFrame$KeyboardListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JOGLFrame$MyMouseAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JOGLFrame$MyMouseAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JOGLFrame$MyTextRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JOGLFrame$MyTextRenderer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/JOGLFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/JOGLFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View$LightLocation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View$LightLocation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/resources/shaders/gouraud-multiple.frag" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/resources/shaders/gouraud-multiple.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/resources/shaders/gouraud-multiple.vert" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/resources/shaders/gouraud-multiple.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/resources/shaders/phong-multiple.frag" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/resources/shaders/phong-multiple.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/resources/shaders/phong-multiple.vert" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/resources/shaders/phong-multiple.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sgraph/GL3ScenegraphRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sgraph/GL3ScenegraphRenderer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sgraph/GroupNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sgraph/GroupNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sgraph/Scenegraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sgraph/Scenegraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/shaders/gouraud-multiple.frag" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/shaders/gouraud-multiple.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/shaders/gouraud-multiple.vert" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/shaders/gouraud-multiple.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/shaders/phong-multiple.frag" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/shaders/phong-multiple.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/shaders/phong-multiple.vert" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/shaders/phong-multiple.vert" afterDir="false" />
     </list>
     <ignored path="Scenegraphs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,14 +52,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="201" selection-start-line="201" selection-end-line="201" />
+            <state relative-caret-position="100">
+              <caret line="600" column="29" selection-start-line="600" selection-start-column="29" selection-end-line="600" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3028#3044#0" expanded="true" />
+                <element signature="e#3586#3602#0" expanded="true" />
+                <element signature="e#9990#10193#0" />
+                <element signature="e#10199#11471#0" />
+                <element signature="e#11477#12756#0" />
+                <element signature="e#12762#14034#0" />
+                <element signature="e#14040#15319#0" />
               </folding>
             </state>
           </provider>
@@ -49,20 +73,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/Scenegraph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+            <state relative-caret-position="3250">
+              <caret line="151" column="14" lean-forward="true" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3505#3519#0" expanded="true" />
+                <element signature="e#3916#3923#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ScenegraphViewer.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/JOGLFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="60" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
+            <state relative-caret-position="287">
+              <caret line="65" column="45" lean-forward="true" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4105#4106#0" expanded="true" />
+                <element signature="e#4162#4163#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/IScenegraphRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="25">
+              <caret line="21" column="75" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,10 +111,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/SceneXMLReader.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ScenegraphViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-262">
-              <caret line="173" column="43" lean-forward="true" selection-start-line="173" selection-start-column="43" selection-end-line="173" selection-end-column="43" />
+            <state relative-caret-position="650">
+              <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,20 +125,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/LeafNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="86" column="84" selection-start-line="86" selection-start-column="84" selection-end-line="86" selection-end-column="84" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/GL3ScenegraphRenderer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="207" column="45" lean-forward="true" selection-start-line="207" selection-start-column="45" selection-end-line="207" selection-end-column="45" />
+            <state relative-caret-position="615">
+              <caret line="96" column="7" lean-forward="true" selection-start-line="96" selection-start-column="7" selection-end-line="96" selection-end-column="7" />
               <folding>
-                <element signature="e#4911#4912#0" expanded="true" />
-                <element signature="e#9145#9146#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1697#1698#0" expanded="true" />
+                <element signature="e#1726#1727#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,8 +139,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/GroupNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="25">
+              <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/INode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/AbstractNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2135">
+              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,7 +169,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/TransformNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state>
               <caret line="124" selection-start-line="124" selection-end-line="124" />
             </state>
           </provider>
@@ -136,16 +189,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sgraph</find>
-      <find>parser</find>
-      <find>impor</find>
-      <find>add</find>
-      <find>addme</find>
-      <find>addmesh</find>
-      <find>set</find>
-      <find>setmaterial</find>
-      <find>system.out.p</find>
-      <find>addtexture</find>
       <find>instance</find>
       <find>attributes</find>
       <find>start</find>
@@ -166,9 +209,20 @@
       <find>object</find>
       <find>sette</find>
       <find>objectname</find>
+      <find>trackballTran</find>
+      <find>cameracon</find>
+      <find>dragge</find>
+      <find>mouse</find>
+      <find>light</find>
+      <find>light</find>
+      <find>initShader</find>
+      <find>error w</find>
+      <find>Error</find>
+      <find>initLight</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\thelx\Documents\CS4300\Graphics4300\Scenegraphs\src\main\java</dir>
+      <dir>C:\Users\thelx\Documents\CS4300\Graphics4300\Scenegraphs</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -215,19 +269,19 @@
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/ymca.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/c.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/building.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/JOGLFrame.java" />
         <option value="$PROJECT_DIR$/src/main/resources/ymca.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/building.txt" />
         <option value="$PROJECT_DIR$/src/main/java/sgraph/IScenegraphRenderer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View.java" />
         <option value="$PROJECT_DIR$/src/main/java/sgraph/AbstractNode.java" />
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/texture-test.xml" />
         <option value="$PROJECT_DIR$/src/main/java/sgraph/SceneXMLReader.java" />
         <option value="$PROJECT_DIR$/src/main/resources/scenegraphmodels/two-buildings.xml" />
         <option value="$PROJECT_DIR$/src/main/java/sgraph/LeafNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/sgraph/GL3ScenegraphRenderer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sgraph/Scenegraph.java" />
         <option value="$PROJECT_DIR$/src/main/java/ScenegraphViewer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sgraph/Scenegraph.java" />
+        <option value="$PROJECT_DIR$/src/main/java/JOGLFrame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View.java" />
       </list>
     </option>
   </component>
@@ -238,11 +292,10 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="11" />
-    <option name="y" value="-15" />
-    <option name="width" value="1943" />
-    <option name="height" value="1043" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1087" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -252,12 +305,24 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Scenegraphs" type="b2602c69:ProjectViewProjectNode" />
               <item name="Scenegraphs" type="47feb1d3:ProjectViewModuleNode" />
+            </path>
+            <path>
+              <item name="Scenegraphs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scenegraphs" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="extras" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Scenegraphs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scenegraphs" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="extras" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Scenegraphs" type="b2602c69:ProjectViewProjectNode" />
@@ -319,43 +384,25 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Scenegraphs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scenegraphs" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="Scenegraphs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="scenegraphmodels" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Scenegraphs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scenegraphs" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="Scenegraphs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="textures" type="462c0819:PsiDirectoryNode" />
+              <item name="shaders" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553222088426" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553823891464" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -421,6 +468,7 @@
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -498,11 +546,12 @@
       <workItem from="1551250073002" duration="258000" />
       <workItem from="1551386334104" duration="37000" />
       <workItem from="1552504832293" duration="5964000" />
+      <workItem from="1553802023499" duration="13315000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67704000" />
+    <option name="totallyTimeSpent" value="81850000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -514,10 +563,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="974" height="1087" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14285715" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14113785" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -526,7 +575,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49733475" weight="0.28141224" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48933902" weight="0.2708559" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48933902" visible="true" weight="0.30607966" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.3956386" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -599,7 +648,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/View.java</url>
-          <line>111</line>
+          <line>117</line>
           <properties />
           <option name="timeStamp" value="38" />
         </line-breakpoint>
@@ -611,6 +660,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/scenegraphs/humanoid-YMCA.xml" />
@@ -800,13 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/INode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="106" column="68" lean-forward="true" selection-start-line="106" selection-start-column="68" selection-end-line="106" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/IScenegraph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -821,65 +867,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/AbstractNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret column="14" selection-start-column="9" selection-end-column="14" />
-          <folding>
-            <element signature="e#3539#3540#0" expanded="true" />
-            <element signature="e#3622#3623#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/IScenegraphRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/scenegraphmodels/texture-test.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/JOGLFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4105#4106#0" expanded="true" />
-            <element signature="e#4162#4163#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="201" selection-start-line="201" selection-end-line="201" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3028#3044#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/GroupNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/TransformNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
         </state>
       </provider>
     </entry>
@@ -897,50 +888,125 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/SceneXMLReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="224" column="19" selection-start-line="224" selection-start-column="19" selection-end-line="224" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/GL3ScenegraphRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="207" column="45" lean-forward="true" selection-start-line="207" selection-start-column="45" selection-end-line="207" selection-end-column="45" />
+        <state>
+          <caret line="180" selection-start-line="180" selection-end-line="180" />
           <folding>
-            <element signature="e#4911#4912#0" expanded="true" />
-            <element signature="e#9145#9146#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/TransformNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/GroupNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/INode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ScenegraphViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/AbstractNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2135">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/IScenegraphRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="21" column="75" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/LeafNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="86" column="84" selection-start-line="86" selection-start-column="84" selection-end-line="86" selection-end-column="84" />
+        <state relative-caret-position="615">
+          <caret line="96" column="7" lean-forward="true" selection-start-line="96" selection-start-column="7" selection-end-line="96" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1697#1698#0" expanded="true" />
+            <element signature="e#1726#1727#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/SceneXMLReader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/JOGLFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-262">
-          <caret line="173" column="43" lean-forward="true" selection-start-line="173" selection-start-column="43" selection-end-line="173" selection-end-column="43" />
+        <state relative-caret-position="287">
+          <caret line="65" column="45" lean-forward="true" selection-start-line="65" selection-start-column="45" selection-end-line="65" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4105#4106#0" expanded="true" />
+            <element signature="e#4162#4163#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sgraph/Scenegraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+        <state relative-caret-position="3250">
+          <caret line="151" column="14" lean-forward="true" selection-start-line="151" selection-start-column="14" selection-end-line="151" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3505#3519#0" expanded="true" />
+            <element signature="e#3916#3923#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ScenegraphViewer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="60" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
+        <state relative-caret-position="100">
+          <caret line="600" column="29" selection-start-line="600" selection-start-column="29" selection-end-line="600" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3586#3602#0" expanded="true" />
+            <element signature="e#9990#10193#0" />
+            <element signature="e#10199#11471#0" />
+            <element signature="e#11477#12756#0" />
+            <element signature="e#12762#14034#0" />
+            <element signature="e#14040#15319#0" />
           </folding>
         </state>
       </provider>

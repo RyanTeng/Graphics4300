@@ -26,6 +26,8 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.List;
 
+import util.Light;
+
 
 /**
  * Created by ashesh on 9/18/2015.
@@ -57,7 +59,10 @@ public class View {
     private int toggle;
     private float spin;
 
+    private int angleOfRotation = 0;
 
+    private List<Matrix4f> transforms;
+    private Matrix4f camMat = new Matrix4f();
 
     private util.ShaderProgram program;
     private util.ShaderLocationsVault shaderLocations;
@@ -89,6 +94,7 @@ public class View {
     public View() {
         projection = new Matrix4f();
         modelView = new Stack<>();
+        transforms = new ArrayList<Matrix4f>();
         trackballRadius = 100;
         scenegraph = null;
         camX = 0;
@@ -136,16 +142,29 @@ public class View {
     }
 
     private void initLights() {
-        util.Light l = new util.Light();
+        Light l = new Light();
         l.setAmbient(0.8f, 0.8f, 0.8f);
         l.setDiffuse(0.5f, 0.5f, 0.5f);
         l.setSpecular(0.5f, 0.5f, 0.5f);
         l.setPosition(00, 00, 100);
         lights.add(l);
         //read comments above where this list is declared
-        lightCoordinateSystems.add(meshObjects.size()); //world
 
+    }
 
+    private void initShaderVariables() {
+        //get input variables that need to be given to the shader program
+        for (int i = 0; i < lights.size(); i++) {
+            LightLocation ll = new LightLocation();
+            String name;
+
+            name = "light[" + i + "]";
+            ll.ambient = shaderLocations.getLocation(name + "" + ".ambient");
+            ll.diffuse = shaderLocations.getLocation(name + ".diffuse");
+            ll.specular = shaderLocations.getLocation(name + ".specular");
+            ll.position = shaderLocations.getLocation(name + ".position");
+            lightLocations.add(ll);
+        }
     }
 
     public void init(GLAutoDrawable gla) throws Exception {
@@ -156,7 +175,7 @@ public class View {
         //compile and make our shader program. Look at the ShaderProgram class for details on how this is done
         program = new util.ShaderProgram();
 
-        program.createProgram(gl, "shaders/phong-multiple.vert", "shaders/phong-multiple"
+        program.createProgram(gl, "shaders/phong-multiple.vert", "shaders/phone-multiple"
                 + ".frag");
 
         shaderLocations = program.getAllShaderVariables(gl);
@@ -171,12 +190,30 @@ public class View {
         propeller2b = readObj(gl, "src/main/resources/models/box.obj");
         light = readObj(gl, "src/main/resources/models/sphere.obj");
 
+        Matrix4f t;
 
+        t = new Matrix4f().translate(0, 0, 0).scale(50, 50, 50);
+        transforms.add(t);
+
+//        initLights();
+//        initShaderVariables();
     }
 
     @SuppressWarnings("Duplicates")
     public void draw(GLAutoDrawable gla) {
+        angleOfRotation = (angleOfRotation + 1);
+
         GL3 gl = gla.getGL().getGL3();
+        FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
+        FloatBuffer fb4 = Buffers.newDirectFloatBuffer (4);
+
+        // ////////////////////
+        //animate the world light (light[0])
+//        Vector4f lightPos = new Vector4f(
+//                (float)(20*Math.sin(0.1*angleOfRotation)),
+//                0,100,1.0f);
+//        lights.get(0).setPosition(lightPos);
+        // ////////////////////
 
         spin += .1f;
 
@@ -208,6 +245,31 @@ public class View {
         if (fov >= 15.0f) {
             fov = 15.0f;
         }
+//        for (int i = 0; i < lights.size(); i++) {
+//            gl.glUniform3fv(lightLocations.get(i).ambient, 1, lights.get(i).getAmbient().get(fb4));
+//            gl.glUniform3fv(lightLocations.get(i).diffuse, 1, lights.get(i).getDiffuse().get(fb4));
+//            gl.glUniform3fv(lightLocations.get(i).specular, 1, lights.get(i).getSpecular().get(fb4));
+//        }
+
+//        for (int i = 0; i < lights.size(); i++) {
+//            Vector4f pos = lights.get(i).getPosition();
+//            Matrix4f lightTransformation=null;
+//
+//            if (lightCoordinateSystems.get(i)==meshObjects.size()) { //light in world
+//                lightTransformation = new Matrix4f(modelView.peek());
+//            }
+//            else if (lightCoordinateSystems.get(i)==meshObjects.size()+1) { //light
+//                // in view
+//                lightTransformation = new Matrix4f();
+//            }
+//            else {//assumed to be object
+//                lightTransformation = new Matrix4f(modelView.peek())
+//                        .mul(camMat)
+//                        .mul(transforms.get(lightCoordinateSystems.get(i)));
+//            }
+//            pos = lightTransformation.transform(pos);
+//            gl.glUniform4fv(lightLocations.get(i).position, 1, pos.get(fb4));
+//        }
 
         if (toggle % 2 == 1) {
             modelView.peek().lookAt(new Vector3f(0, 100, 100), new Vector3f(0, 50, 0), new Vector3f(0, 1, 0));
@@ -259,7 +321,6 @@ public class View {
     private void drawCamera(GLAutoDrawable gla, GL3 gl) {
         FloatBuffer fb16 = Buffers.newDirectFloatBuffer(16);
         FloatBuffer fb4 = Buffers.newDirectFloatBuffer(4);
-        Matrix4f camMat = new Matrix4f();
         Material mat = new Material();
         camMat.lookAt(new Vector3f(camX, camY, camZ),
                 new Vector3f(0, 0, -200),
