@@ -154,9 +154,7 @@ public abstract class AbstractNode implements INode {
    * Adds a new light to this node.
    */
   @Override
-  public void addLight(Light l) {
-    lights.add(l);
-  }
+  public void addLight(Light l) {lights.add(l);}
 
   @Override
   public List<Light> getLightsInView(Stack<Matrix4f> modelview) {
