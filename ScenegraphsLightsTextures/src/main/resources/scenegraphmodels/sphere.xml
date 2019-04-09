@@ -32,6 +32,12 @@
                 <specular>0.8 0.8 0.8</specular>
                 <position>100 100 100</position>
             </light>
+            <light>
+                <ambient>0.8 0.8 0.8</ambient>
+                <diffuse>0.8 0.8 0.8</diffuse>
+                <specular>0.8 0.8 0.8</specular>
+                <position>-100 -100 -100</position>
+            </light>
             <transform>
                 <set>
                     <scale>2 2 2 </scale>

@@ -2,7 +2,6 @@ package sgraph;
 
 import RayTracer.HitRecord;
 import RayTracer.Ray;
-import com.jogamp.opengl.GLAutoDrawable;
 
 import org.joml.Matrix4f;
 
@@ -145,6 +144,6 @@ public interface INode {
    */
   List<Light> getLightsInView(Stack<Matrix4f> modelview);
 
-  void closestIntersect(Ray ray, HitRecord record);
+  void closestIntersect(Ray ray, Stack<Matrix4f> mv, HitRecord record);
 }
 

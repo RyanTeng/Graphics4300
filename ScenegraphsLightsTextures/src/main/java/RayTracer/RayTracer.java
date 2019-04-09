@@ -10,39 +10,44 @@ import util.Light;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Stack;
 
 public class RayTracer {
     public BufferedImage raytrace(int width, int height, Stack<Matrix4f> modelview, Vector3f camPos, IScenegraph scenegraph) {
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        System.out.println("Test1");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 Vector3f posn = camPos;
                 Vector3f dir = new Vector3f(x, y, -camPos.z);
+                dir.normalize();
                 Ray ray = new Ray(posn, dir);
-                System.out.println("Test2");
                 Color color = raycast(ray, modelview, scenegraph);
                 img.setRGB(x, y, color.getRGB());
             }
         }
+        System.out.println("FINISHLOOP");
         return img;
     }
 
     private Color raycast(Ray ray, Stack<Matrix4f> mv, IScenegraph scene) {
-        System.out.println("Test3");
         HitRecord record = new HitRecord();
         boolean hit = closestIntersect(ray, mv, scene, record);
         Color color = Color.BLACK;
         if (hit) {
-            color = shade(ray, record, scene.getLights(mv));
+            color = Color.WHITE;
+            //color = shade(ray, record, scene.getLights(mv));
         }
         return color;
     }
 
     private boolean closestIntersect(Ray ray, Stack<Matrix4f> mv, IScenegraph scene, HitRecord record) {
-        scene.getRoot().closestIntersect(ray, record);
-        return record.t != 0;
+        Stack<Matrix4f> mv2 = new Stack<>();
+        mv2.addAll(mv);
+        mv2.pop();
+        scene.getRoot().closestIntersect(ray, mv2, record);
+        return record.t > 0;
     }
 
     private Color shade(Ray ray, HitRecord record, ArrayList<Light> lights) {

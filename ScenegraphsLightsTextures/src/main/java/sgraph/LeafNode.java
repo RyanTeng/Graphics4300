@@ -2,11 +2,9 @@ package sgraph;
 
 import RayTracer.HitRecord;
 import RayTracer.Ray;
-import com.jogamp.opengl.GL3;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
-import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -53,19 +51,47 @@ public class LeafNode extends AbstractNode {
     }
 
     @Override
-    public void closestIntersect(Ray ray, HitRecord record) {
+    public void closestIntersect(Ray ray, Stack<Matrix4f> mv, HitRecord record) {
         if (objInstanceName.equals("box")) {
             if (ray.direction.x == 0 || ray.direction.y == 0 || ray.direction.z == 0 ||
                     (-0.5f <= ray.posn.x / ray.direction.x) && (ray.posn.x / ray.direction.x <= 0.5f) &&
-                    (-0.5f <= ray.posn.y / ray.direction.y) && (ray.posn.y / ray.direction.y <= 0.5f) &&
-                    (-0.5f <= ray.posn.z / ray.direction.z) && (ray.posn.z / ray.direction.z <= 0.5f)) {
-                record.t = ((-0.5f - ray.posn.x / ray.direction.x) + (-0.5f - ray.posn.y / ray.direction.y) + (-0.5f - ray.posn.z / ray.direction.z)) / 3;
+                            (-0.5f <= ray.posn.y / ray.direction.y) && (ray.posn.y / ray.direction.y <= 0.5f) &&
+                            (-0.5f <= ray.posn.z / ray.direction.z) && (ray.posn.z / ray.direction.z <= 0.5f)) {
+                float tempMin = (float) Math.min((-0.5 - ray.posn.x) / ray.direction.x, (-0.5 - ray.posn.y) / ray.direction.y);
+                float tempMax = (float) Math.max((0.5 - ray.posn.x) / ray.direction.x, (0.5 - ray.posn.y) / ray.direction.y);
+                record.t = (float) Math.min(tempMin, (-0.5 - ray.posn.z) / ray.direction.z);
+                System.out.println(record.t);
                 record.intersect = new Vector4f(
                         ray.posn.x + record.t * ray.direction.x,
                         ray.posn.y + record.t * ray.direction.y,
                         ray.posn.z + record.t * ray.direction.z,
                         0);
-                record.normal = new Vector4f(0,0,0,0);
+                record.intersect = record.intersect.normalize();
+                //bottom face
+                if (record.intersect.x <= 0 && record.intersect.y <= 0 && record.intersect.z <= 0) {
+                    record.normal = new Vector4f(0, 0, -1, 0);
+                }
+                //top face
+                if (record.intersect.x >= 0 && record.intersect.y >= 0 && record.intersect.z >= 0) {
+                    record.normal = new Vector4f(0, 0, 1, 0);
+                }
+                //back face
+                if (record.intersect.x >= 0 && record.intersect.y <= 0 && record.intersect.z <= 0) {
+                    record.normal = new Vector4f(-1, 0, 0, 0);
+                }
+                //front face
+                if (record.intersect.x <= 0 && record.intersect.y <= 0 && record.intersect.z <= 0) {
+                    record.normal = new Vector4f(1, 0, 0, 0);
+                }
+                //left face
+                if (record.intersect.x <= 0 && record.intersect.y >= 0 && record.intersect.z <= 0) {
+                    record.normal = new Vector4f(0, -1, 0, 0);
+                }
+                //right face
+                if (record.intersect.x <= 0 && record.intersect.y >= 0 && record.intersect.z <= 0) {
+                    record.normal = new Vector4f(0, 1, 0, 0);
+                }
+                record.normal = new Vector4f(0, 0, 0, 0);
                 record.ambient = material.getAmbient();
                 record.diffuse = material.getDiffuse();
                 record.shininess = material.getShininess();
@@ -80,6 +106,7 @@ public class LeafNode extends AbstractNode {
             record.shininess = material.getShininess();
             record.specular = material.getSpecular();
         }
+
     }
 
     /*

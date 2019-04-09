@@ -2,7 +2,6 @@ package sgraph;
 
 import RayTracer.HitRecord;
 import RayTracer.Ray;
-import com.jogamp.opengl.GLAutoDrawable;
 
 import org.joml.Matrix4f;
 
@@ -194,7 +193,7 @@ public class TransformNode extends AbstractNode {
   }
 
   @Override
-  public void closestIntersect(Ray ray, HitRecord record) {
-    child.closestIntersect(ray, record);
+  public void closestIntersect(Ray ray, Stack<Matrix4f> mv, HitRecord record) {
+    child.closestIntersect(ray, mv, record);
   }
 }
