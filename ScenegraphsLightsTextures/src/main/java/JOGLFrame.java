@@ -6,6 +6,7 @@ import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.AnimatorBase;
 import com.jogamp.opengl.util.FPSAnimator;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.InputStream;
 import util.JOGLGraphTextRenderer;
@@ -69,7 +70,16 @@ public class JOGLFrame extends JFrame {
 
       @Override
       public void display(GLAutoDrawable glAutoDrawable) { //called every time this window must be redrawn
-        view.draw(canvas);
+        if (view.renderMode == true) {
+          JFrame frame = new JFrame();
+          frame.getContentPane().setLayout(new FlowLayout());
+          frame.getContentPane().add(new JLabel(new ImageIcon(view.bi)));
+          frame.pack();
+          frame.setVisible(true);
+        }
+        else {
+          view.draw(canvas);
+        }
         String text = "Frame rate: " + canvas.getAnimator().getLastFPS();
         textRenderer.drawText(glAutoDrawable, text, 10, canvas.getSurfaceHeight() - 50, 1, 0, 0, 20.0f);
       }
@@ -97,6 +107,10 @@ public class JOGLFrame extends JFrame {
 
     @Override
     public void keyPressed(KeyEvent e) {
+      if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        JOGLFrame.this.view.renderMode = !JOGLFrame.this.view.renderMode;
+      }
+
     }
 
     @Override

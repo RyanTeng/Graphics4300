@@ -5,6 +5,9 @@ import org.joml.Matrix4f;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 
+import RayTracer.Ray;
+import RayTracer.RayTracer;
+import java.awt.image.BufferedImage;
 
 import java.io.InputStream;
 import java.nio.FloatBuffer;
@@ -33,6 +36,12 @@ public class View {
   private int projectionLocation;
   private sgraph.IScenegraph<VertexAttrib> scenegraph;
 
+  private Ray ray;
+  private RayTracer rayTracer;
+
+  // 0 is OpenGL's rendering mode, 1 is ray tracing
+  public boolean renderMode;
+  public BufferedImage bi;
 
   public View() {
     projection = new Matrix4f();
@@ -40,6 +49,7 @@ public class View {
     trackballRadius = 300;
     trackballTransform = new Matrix4f();
     scenegraph = null;
+    renderMode = false;
   }
 
   public void initScenegraph(GLAutoDrawable gla, InputStream in) throws Exception {
@@ -77,6 +87,8 @@ public class View {
 
     //get input variables that need to be given to the shader program
     projectionLocation = shaderLocations.getLocation("projection");
+
+    ray = new Ray(new Vector3f(0, 0 ,0), new Vector3f(0, 0, 1));
   }
 
 
@@ -90,47 +102,54 @@ public class View {
 
     program.enable(gl);
 
-    while (!modelView.empty())
-      modelView.pop();
+    //render mode : opengl rendering
+    if (renderMode == false) {
+      while (!modelView.empty())
+        modelView.pop();
 
-        /*
-         *In order to change the shape of this triangle, we can either move the vertex positions above, or "transform" them
-         * We use a modelview matrix to store the transformations to be applied to our triangle.
-         * Right now this matrix is identity, which means "no transformations"
-         */
-    modelView.push(new Matrix4f());
-    modelView.peek().lookAt(new Vector3f(150,150,150), new Vector3f(0, 0,
-            0),
-            new Vector3f(0, 1, 0))
-            .mul(trackballTransform);
+      /*
+       *In order to change the shape of this triangle, we can either move the vertex positions above, or "transform" them
+       * We use a modelview matrix to store the transformations to be applied to our triangle.
+       * Right now this matrix is identity, which means "no transformations"
+       */
+      modelView.push(new Matrix4f());
+      modelView.peek().lookAt(new Vector3f(150, 150, 150), new Vector3f(0, 0,
+                      0),
+              new Vector3f(0, 1, 0))
+              .mul(trackballTransform);
 
 
-    /*
-     *Supply the shader with all the matrices it expects.
-    */
-    FloatBuffer fb = Buffers.newDirectFloatBuffer(16);
-    gl.glUniformMatrix4fv(projectionLocation, 1, false, projection.get(fb));
+      /*
+       *Supply the shader with all the matrices it expects.
+       */
+      FloatBuffer fb = Buffers.newDirectFloatBuffer(16);
+      gl.glUniformMatrix4fv(projectionLocation, 1, false, projection.get(fb));
 
-    //a uniform texture matrix for everybody
-    gl.glUniformMatrix4fv(shaderLocations.getLocation("texturematrix"),
-            1,false,new Matrix4f().identity().get(fb));
+      //a uniform texture matrix for everybody
+      gl.glUniformMatrix4fv(shaderLocations.getLocation("texturematrix"),
+              1, false, new Matrix4f().identity().get(fb));
 
-    scenegraph.draw(modelView);
-    /*
-     *OpenGL batch-processes all its OpenGL commands.
-          *  *The next command asks OpenGL to "empty" its batch of issued commands, i.e. draw
-     *
-     *This a non-blocking function. That is, it will signal OpenGL to draw, but won't wait for it to
-     *finish drawing.
-     *
-     *If you would like OpenGL to start drawing and wait until it is done, call glFinish() instead.
-     */
-    gl.glFlush();
+      scenegraph.draw(modelView);
+      /*
+       *OpenGL batch-processes all its OpenGL commands.
+       *  *The next command asks OpenGL to "empty" its batch of issued commands, i.e. draw
+       *
+       *This a non-blocking function. That is, it will signal OpenGL to draw, but won't wait for it to
+       *finish drawing.
+       *
+       *If you would like OpenGL to start drawing and wait until it is done, call glFinish() instead.
+       */
+      gl.glFlush();
+    }
+    //rendering mode : ray tracing
+    else {
+      ray = new Ray(new Vector3f(0, 0 ,0), new Vector3f(0, 0, 1));
+      bi = rayTracer.raytrace(WINDOW_WIDTH, WINDOW_HEIGHT, this.modelView, new Vector3f(0,0,0), scenegraph);
+    }
 
     program.disable(gl);
-
-
   }
+
 
   public void mousePressed(int x, int y) {
     mousePos = new Vector2f(x, y);
@@ -165,7 +184,6 @@ public class View {
 
   public void dispose(GLAutoDrawable gla) {
     GL3 gl = gla.getGL().getGL3();
-
   }
 
 
