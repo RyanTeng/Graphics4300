@@ -144,7 +144,7 @@ public class View {
     //rendering mode : ray tracing
     else {
       ray = new Ray(new Vector3f(0, 0 ,0), new Vector3f(0, 0, 1));
-      bi = rayTracer.raytrace(WINDOW_WIDTH, WINDOW_HEIGHT, this.modelView, new Vector3f(0,0,0), scenegraph);
+      bi = rayTracer.raytrace(WINDOW_WIDTH, WINDOW_HEIGHT, this.modelView, new Vector3f(150,150,150), scenegraph);
     }
 
     program.disable(gl);

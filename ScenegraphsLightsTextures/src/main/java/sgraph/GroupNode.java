@@ -1,5 +1,7 @@
 package sgraph;
 
+import RayTracer.HitRecord;
+import RayTracer.Ray;
 import com.jogamp.opengl.GLAutoDrawable;
 
 import org.joml.Matrix4f;
@@ -145,5 +147,12 @@ public class GroupNode extends AbstractNode {
     //now get the lights from this node's lights
     lights.addAll(super.getLightsInView(modelview));
     return lights;
+  }
+
+  @Override
+  public void closestIntersect(Ray ray, HitRecord record) {
+    for (INode child: children) {
+      child.closestIntersect(ray, record);
+    }
   }
 }
