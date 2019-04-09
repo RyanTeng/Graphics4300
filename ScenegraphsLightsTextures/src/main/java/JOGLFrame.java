@@ -36,6 +36,8 @@ public class JOGLFrame extends JFrame {
 
     add(canvas);
 
+    JFrame frame = new JFrame();
+    frame.getContentPane().setLayout(new FlowLayout());
 
     //capture mouse events
     MyMouseAdapter mouseAdapter = new MyMouseAdapter();
@@ -71,10 +73,9 @@ public class JOGLFrame extends JFrame {
       @Override
       public void display(GLAutoDrawable glAutoDrawable) { //called every time this window must be redrawn
         if (view.renderMode) {
-          JFrame frame = new JFrame();
-          frame.getContentPane().setLayout(new FlowLayout());
+
           view.draw(canvas);
-          frame.getContentPane().add(new JLabel(new ImageIcon(view.bi)));
+          frame.setContentPane(new JLabel(new ImageIcon(view.bi)));
           frame.pack();
           frame.setVisible(true);
         }
