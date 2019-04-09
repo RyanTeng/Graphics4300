@@ -33,7 +33,7 @@ public class RayTracer {
         Color color = Color.BLACK;
         if (hit) {
             //TODO: write a getLights function which returns all the lights in a scene
-            Color color = shade(ray, record, scene.getLights());
+            Color color = shade(ray, record, scene.getLights(mv));
         }
         return color;
     }

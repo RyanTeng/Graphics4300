@@ -131,6 +131,12 @@ public class Scenegraph<VertexType extends IVertexData> implements IScenegraph<V
   }
 
   @Override
+  public ArrayList<Light> getLights(Stack<Matrix4f> modelView) {
+    ArrayList lights = new ArrayList(root.getLightsInView(modelView));
+    return lights;
+  }
+
+  @Override
   public Map<String, INode> getNodes() {
     Map<String, INode> nodes = new TreeMap<String, INode>();
     nodes.putAll(this.nodes);

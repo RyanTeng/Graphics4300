@@ -5,7 +5,9 @@ import com.jogamp.opengl.GLAutoDrawable;
 import org.joml.Matrix4f;
 import util.IVertexData;
 import util.ShaderProgram;
+import util.Light;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Stack;
 
@@ -99,5 +101,15 @@ public interface IScenegraph<VertexType extends IVertexData>
      * @param path
      */
     void addTexture(String name,String path);
+
+    /**
+     * Returns the arraylist of lights in this modelview
+     * @param modelView - the view coordinate system
+     * @return the arraylist of lights from the root node
+     */
+    public ArrayList<Light> getLights(Stack<Matrix4f> modelView);
+
     void dispose();
+
+
 }
