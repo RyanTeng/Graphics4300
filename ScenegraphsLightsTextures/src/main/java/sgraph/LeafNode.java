@@ -65,6 +65,7 @@ public class LeafNode extends AbstractNode {
                         ray.posn.y + record.t * ray.direction.y,
                         ray.posn.z + record.t * ray.direction.z,
                         0);
+                record.normal = new Vector4f(0,0,0,0);
                 record.ambient = material.getAmbient();
                 record.diffuse = material.getDiffuse();
                 record.shininess = material.getShininess();
