@@ -59,10 +59,11 @@ public class LeafNode extends AbstractNode {
                     (-0.5f <= ray.posn.x / ray.direction.x) && (ray.posn.x / ray.direction.x <= 0.5f) &&
                     (-0.5f <= ray.posn.y / ray.direction.y) && (ray.posn.y / ray.direction.y <= 0.5f) &&
                     (-0.5f <= ray.posn.z / ray.direction.z) && (ray.posn.z / ray.direction.z <= 0.5f)) {
+                record.t = ((-0.5f - ray.posn.x / ray.direction.x) + (-0.5f - ray.posn.y / ray.direction.y) + (-0.5f - ray.posn.z / ray.direction.z)) / 3;
                 record.intersect = new Vector4f(
-                        ray.posn.x + (-0.5f - ray.posn.x / ray.direction.x) * ray.direction.x,
-                        ray.posn.y + (-0.5f - ray.posn.y / ray.direction.y) * ray.direction.y,
-                        ray.posn.z + (-0.5f - ray.posn.z / ray.direction.z) * ray.direction.z,
+                        ray.posn.x + record.t * ray.direction.x,
+                        ray.posn.y + record.t * ray.direction.y,
+                        ray.posn.z + record.t * ray.direction.z,
                         0);
                 record.ambient = material.getAmbient();
                 record.diffuse = material.getDiffuse();

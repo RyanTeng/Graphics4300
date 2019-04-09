@@ -24,7 +24,7 @@ import java.util.Stack;
  * by the JOGLFrame class.
  */
 public class View {
-  private int WINDOW_WIDTH, WINDOW_HEIGHT;
+  private int WINDOW_WIDTH = 500, WINDOW_HEIGHT = 500;
   private Stack<Matrix4f> modelView;
   private Matrix4f projection, trackballTransform;
   private float trackballRadius;
@@ -89,6 +89,7 @@ public class View {
     projectionLocation = shaderLocations.getLocation("projection");
 
     ray = new Ray(new Vector3f(0, 0 ,0), new Vector3f(0, 0, 1));
+    bi = new BufferedImage(WINDOW_WIDTH, WINDOW_HEIGHT, BufferedImage.TYPE_INT_ARGB);
   }
 
 
@@ -143,7 +144,7 @@ public class View {
     }
     //rendering mode : ray tracing
     else {
-      ray = new Ray(new Vector3f(0, 0 ,0), new Vector3f(0, 0, 1));
+      //ray = new Ray(new Vector3f(0, 0 ,0), new Vector3f(0, 0, 1));
       bi = rayTracer.raytrace(WINDOW_WIDTH, WINDOW_HEIGHT, this.modelView, new Vector3f(150,150,150), scenegraph);
     }
 

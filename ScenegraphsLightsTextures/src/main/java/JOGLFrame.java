@@ -51,7 +51,7 @@ public class JOGLFrame extends JFrame {
           view.init(canvas);
           InputStream in = getClass().getClassLoader()
                   .getResourceAsStream
-                          ("scenegraphmodels/face-hierarchy" +
+                          ("scenegraphmodels/sphere" +
                                   ".xml");
           view.initScenegraph(canvas, in);
           textRenderer = new JOGLGraphTextRenderer(glAutoDrawable);
@@ -70,9 +70,10 @@ public class JOGLFrame extends JFrame {
 
       @Override
       public void display(GLAutoDrawable glAutoDrawable) { //called every time this window must be redrawn
-        if (view.renderMode == true) {
+        if (view.renderMode) {
           JFrame frame = new JFrame();
           frame.getContentPane().setLayout(new FlowLayout());
+          view.draw(canvas);
           frame.getContentPane().add(new JLabel(new ImageIcon(view.bi)));
           frame.pack();
           frame.setVisible(true);
