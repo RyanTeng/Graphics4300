@@ -5,7 +5,7 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-import java.awt.*;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -95,19 +95,17 @@ public class RTScenegraphRenderer implements IScenegraphRenderer {
                         0.0f);
                 HitRecord hitA = new HitRecord();
                 raycast(rayView,root,modelView,hitA);
-                Color colorA = new Color((int)(getRaytracedColor(hitA).getRGB() * hitA.material.getAbsorption()));
+                Color colorA = new Color((int)(getRaytracedColor(hitA).getRGB() ));
                 Color colorR = new Color(0,0,0);
                 if (hitA.material.getReflection() > 0) {
                     Ray reflectRay = new Ray();
                     reflectRay.start = hitA.point;
                     reflectRay.direction = rayView.direction.sub(hitA.normal.mul(2 * (hitA.normal.dot(rayView.direction))));
-
-
                     HitRecord hitR = new HitRecord();
                         raycast(reflectRay, root, modelView, hitR);
-                        colorR = new Color((int) (getRaytracedColor(hitR).getRGB() * hitA.material.getReflection()));
+                        colorR = new Color((int) (getRaytracedColor(hitR).getRGB()));
                 }
-                Color color = new Color(colorA.getRGB() + colorR.getRGB());
+                Color color = blend(colorA, colorR, hitA.material.getAbsorption(), hitA.material.getReflection());
 
                 output.setRGB(i,height-1-j,color.getRGB());
             }
@@ -128,6 +126,15 @@ public class RTScenegraphRenderer implements IScenegraphRenderer {
             throw new IllegalArgumentException("Could not write raytraced image!");
         }
 
+    }
+
+    public static Color blend(Color c0, Color c1, float weight0, float weight1) {
+        double r = weight0 * c0.getRed() + weight1 * c1.getRed();
+        double g = weight0 * c0.getGreen() + weight1 * c1.getGreen();
+        double b = weight0 * c0.getBlue() + weight1 * c1.getBlue();
+        double a = Math.max(c0.getAlpha(), c1.getAlpha());
+
+        return new Color((int) r, (int) g, (int) b, (int) a);
     }
 
     private void raycast(Ray rayView,INode root,Stack<Matrix4f> modelView,HitRecord hitRecord) {

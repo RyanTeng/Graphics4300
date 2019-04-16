@@ -35,7 +35,6 @@
                     <diffuse> 0.8 0.8 0.8</diffuse>
                     <specular> 0.8 0.8 0.8</specular>
                     <shininess> 100 </shininess>
-                    <absorption> 1 </absorption>
                 </material>
             </object>
         </transform>
