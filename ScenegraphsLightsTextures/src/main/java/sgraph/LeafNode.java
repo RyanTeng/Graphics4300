@@ -99,7 +99,7 @@ public class LeafNode extends AbstractNode {
             }
 
 
-        } else if (objInstanceName == "sphere") {
+        } else if (objInstanceName.equals("sphere"))   {
 
             record.ambient = material.getAmbient();
             record.diffuse = material.getDiffuse();
