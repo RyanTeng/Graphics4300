@@ -92,6 +92,7 @@ public class RTScenegraphRenderer implements IScenegraphRenderer {
                         -0.5f * height / (float) Math.tan(Math.toRadians(0.5 * FOVY)),
                         0.0f);
 
+                float prevRefIdx = 1;
                 HitRecord hitA = new HitRecord();
                 raycast(rayView, root, modelView, hitA);
                 Color colorA = new Color(getRaytracedColor(hitA, root, modelView).getRGB());
@@ -110,7 +111,27 @@ public class RTScenegraphRenderer implements IScenegraphRenderer {
                         colorR = new Color(getRaytracedColor(hitR, root, modelView).getRGB());
                     }
                 }
-                Color color = blend(colorA, colorR, hitA.material.getAbsorption(), hitA.material.getReflection());
+
+                Color colorT = new Color(0, 0, 0);
+                if (hitA.material.getTransparency() > 0) {
+                    Ray refractRay = new Ray();
+                    refractRay.start = hitA.point;
+                    float thetaI = (float) Math.cos(-hitA.normal.dot(rayView.direction));
+                    float refractRatio = hitA.material.getRefractiveIndex() / prevRefIdx;
+                    refractRay.direction = rayView.direction.mul(refractRatio)
+                            .add(hitA.normal.mul(refractRatio * thetaI - (float)
+                                    (Math.cos(Math.sqrt(1 - Math.sin(refractRatio * Math.sin(Math.sqrt(1 - Math.cos(thetaI) * Math.cos(thetaI))))
+                                            * Math.sin(refractRatio * Math.sin(Math.sqrt(1 - Math.cos(thetaI) * Math.cos(thetaI)))))))));
+                    HitRecord hitT = new HitRecord();
+                    raycast(refractRay, root, modelView, hitT);
+                    colorT = getRaytracedColor(hitT, root, modelView);
+
+                }
+                float absorption = hitA.material.getAbsorption();
+                float reflection = hitA.material.getReflection();
+                float transparency = hitA.material.getTransparency();
+
+                Color color = blend(colorT, blend(colorA, colorR, absorption / 1f, reflection / 1f), transparency / 1f, absorption + transparency / 1f);
 
                 output.setRGB(i, height - 1 - j, color.getRGB());
             }

@@ -28,7 +28,6 @@
             <set>
                 <scale>50 50 50</scale>
             </set>
-
             <object instanceof="sphere" texture="earth">
                 <material>
                     <ambient> 0.2 0.2 0.2 </ambient>
@@ -50,6 +49,10 @@
                     <diffuse> 0.8 0.8 0.1</diffuse>
                     <specular> 0.8 0.8 0.1</specular>
                     <shininess> 100 </shininess>
+                    <absorption> 0.3 </absorption>
+                    <reflection> 0.2 </reflection>
+                    <transparency> 0.5 </transparency>
+                    <refractive> 1.33 </refractive>
                 </material>
             </object>
         </transform>
