@@ -899,10 +899,16 @@
                         <scale>1 1 1</scale>
                     </set>
                     <object instanceof="sphere" texture="earth">
+                        <light>
+                            <ambient>0.8 0.8 0.8</ambient>
+                            <diffuse>0.8 0.8 0.8</diffuse>
+                            <specular>0.8 0.8 0.8</specular>
+                            <position>0 0 100</position>
+                        </light>
                         <material>
                             <ambient>0.1 0.1 0.1</ambient>
-                            <diffuse>0.1 0.1 0.1</diffuse>
-                            <specular>0.1 0.1 0.1</specular>
+                            <diffuse>0.8 0.8 0.8</diffuse>
+                            <specular>0.8 0.8 0.8</specular>
                             <shininess>20</shininess>
                         </material>
                     </object>
@@ -914,17 +920,12 @@
                         <scale>.2 .2 .2 </scale>
                         <translate>0 0 10</translate>
                     </set>
-                    <light>
-                        <ambient>.9 .9 .9</ambient>
-                        <diffuse>.9 .9 .9</diffuse>
-                        <specular>.9 .9 .9</specular>
-                    </light>
                     <object instanceof="sphere" texture="white">
                         <material>
-                            <ambient>1 1 1</ambient>
-                            <diffuse>1 1 1</diffuse>
-                            <specular>1 1 1</specular>
-                            <shininess>100</shininess>
+                            <ambient>.6 .6 .6</ambient>
+                            <diffuse>.6 .6 .6</diffuse>
+                            <specular>.6 .6 .6</specular>
+                            <shininess>70</shininess>
                         </material>
                     </object>
                 </transform>
