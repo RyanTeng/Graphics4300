@@ -53,7 +53,7 @@ public class JOGLFrame extends JFrame {
           view.init(canvas);
           InputStream in = getClass().getClassLoader()
                   .getResourceAsStream
-                          ("scenegraphmodels/sphere" +
+                          ("scenegraphmodels/fancy" +
                                   ".xml");
           view.initScenegraph(canvas, in);
           textRenderer = new JOGLGraphTextRenderer(glAutoDrawable);

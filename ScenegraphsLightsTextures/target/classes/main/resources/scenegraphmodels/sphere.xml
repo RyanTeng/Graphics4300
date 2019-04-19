@@ -1,0 +1,57 @@
+<scene>
+    <instance name="sphere" path="models/sphere"></instance>
+    <instance name="box" path="models/box"></instance>
+    <instance name="cylinder" path="models/cylinder"></instance>
+    <instance name="cone" path="models/cone"></instance>
+    <image name="earth" path="textures/earthmap.png" />
+    <!--	<image name="checkerboard" path="checkerboard.png" />
+        <image name="earthmap" path="earthmap.png" />
+    -->
+
+    <light>
+        <ambient>0.8 0.8 0.8</ambient>
+        <diffuse>0.8 0.8 0.8</diffuse>
+        <specular>0.8 0.8 0.8</specular>
+        <position>0 0 100</position>
+        <spotangle>180</spotangle>
+        <spotdirection>1 0 0</spotdirection>
+    </light>
+
+    <transform>
+        <set>
+            <translate>0 0 0</translate>
+            <scale>72 72 72</scale>
+        </set>
+        <!-- light added to transform node -->
+
+        <group name="ball">
+            <!-- light added to group node -->
+            <light>
+                <ambient>0.8 0.8 0.8</ambient>
+                <diffuse>0.8 0.8 0.8</diffuse>
+                <specular>0.8 0.8 0.8</specular>
+                <position>100 100 100</position>
+            </light>
+            <light>
+                <ambient>0.8 0.8 0.8</ambient>
+                <diffuse>0.8 0.8 0.8</diffuse>
+                <specular>0.8 0.8 0.8</specular>
+                <position>-100 -100 -100</position>
+            </light>
+            <transform>
+                <set>
+                    <scale>4 4 4 </scale>
+                </set>
+                <object instanceof="box" texture="earth">
+                    <material>
+                        <ambient>0.1 0.1 0.1</ambient>
+                        <diffuse>0.8 0.8 0.8</diffuse>
+                        <specular>0.8 0.8 0.8</specular>
+                        <shininess>20</shininess>
+                    </material>
+                </object>
+            </transform>
+        </group>
+    </transform>
+
+</scene>

@@ -40,7 +40,7 @@
             </light>
             <transform>
                 <set>
-                    <scale>2 2 2 </scale>
+                    <scale>4 4 4 </scale>
                 </set>
                 <object instanceof="box" texture="earth">
                     <material>
